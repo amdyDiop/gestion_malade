@@ -20,47 +20,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4756cee9-6cc9-452e-9522-494fc0f82d3a" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/gestionMalade.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/1/f/1fa30fea3e9ae270a3c38a6113a3689d8987d108" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/9/4/9498fe36aae50b5beb443c530c906c2f50b37a70" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/a/d/ad8b439416d1e02614f47c5b471c7c4e587dca82" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/c/5/c5f941b4d4e9404f23935164fabdd261abb68e93" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/f/f/ffb3f1cfd73fdec1f0c80c63d0b5bbc1fff22022" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/symfony2.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/migrations/Version20201122165033.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/migrations/Version20201122165444.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/homme-medecin.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Controller/InfirmierController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Entity/Caissier.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Entity/Constance.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Entity/Infirmier.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Entity/Ticket.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Entity/TypeVisite.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Form/InfirmierType.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Repository/CaissierRepository.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Repository/ConstanceRepository.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Repository/InfirmierRepository.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Repository/TicketRepository.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Repository/TypeVisiteRepository.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Security/LoginAuthentificationAuthenticator.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/infirmier/_delete_form.html.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/infirmier/_form.html.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/infirmier/edit.html.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/infirmier/index.html.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/infirmier/new.html.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/infirmier/show.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/bundles.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/bundles.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/packages/security.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/packages/security.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/packages/twig.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/packages/twig.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/symfony.lock" beforeDir="false" afterPath="$PROJECT_DIR$/symfony.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/base.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/User.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Security/LoginAuthentificationAuthenticator.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Security/LoginAuthentificationAuthenticator.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/ticket/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/ticket/index.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -194,17 +157,17 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/public/img" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/Repository" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/Repository" />
+      <recent name="$PROJECT_DIR$/src/Entity" />
       <recent name="$PROJECT_DIR$/public/img" />
       <recent name="$PROJECT_DIR$/src/Security" />
       <recent name="$PROJECT_DIR$/src" />
-      <recent name="$PROJECT_DIR$/public" />
-      <recent name="$PROJECT_DIR$" />
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -226,6 +189,9 @@
       <workItem from="1607802582163" duration="7309000" />
       <workItem from="1607899857363" duration="28000" />
       <workItem from="1607934242168" duration="54000" />
+      <workItem from="1608413190688" duration="13438000" />
+      <workItem from="1608547967336" duration="1155000" />
+      <workItem from="1608985539019" duration="1403000" />
     </task>
     <servers />
   </component>
@@ -246,15 +212,5 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-  </component>
-  <component name="WindowStateProjectService">
-    <state x="68" y="22" width="1464" height="842" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1606065402293">
-      <screen x="68" y="27" width="1468" height="837" />
-    </state>
-    <state x="68" y="22" width="1464" height="842" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/68.27.1468.837@68.27.1468.837" timestamp="1606065402293" />
-    <state x="381" y="27" width="840" height="1034" key="search.everywhere.popup" timestamp="1606061867656">
-      <screen x="68" y="27" width="1468" height="837" />
-    </state>
-    <state x="381" y="27" width="840" height="1034" key="search.everywhere.popup/68.27.1468.837@68.27.1468.837" timestamp="1606061867656" />
   </component>
 </project>

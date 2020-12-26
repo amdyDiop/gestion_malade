@@ -84,7 +84,9 @@ class LoginAuthentificationAuthenticator extends AbstractFormLoginAuthenticator 
 
     public function checkCredentials($credentials, UserInterface $user)
     {
-        $this->flashy->info(" mot de passe incorrect");
+        if (!$this->passwordEncoder->isPasswordValid($user, $credentials['password'])){
+            $this->flashy->info(" mot de passe incorrect");
+        }
         return $this->passwordEncoder->isPasswordValid($user, $credentials['password']);
 
     }
@@ -103,10 +105,12 @@ class LoginAuthentificationAuthenticator extends AbstractFormLoginAuthenticator 
             return new RedirectResponse($targetPath);
         }
         $user = $this->security->getUser();
+        if ($user->getRoles()[0] == "ROLE_DOCTEUR") {
+            $this->flashy->success("Bienvenue" . $user->getUsername());
 
-        if ($user->getRoles()[0] == "ROLE_MEDECIN") {
             return new RedirectResponse($this->urlGenerator->generate('docteur_index'));
         } else if ($user->getRoles()[0] == "ROLE_INFIRMIER") {
+
             $this->flashy->success("Bienvenue" . $user->getUsername());
             return new RedirectResponse($this->urlGenerator->generate('infirmier_index'));
         }
