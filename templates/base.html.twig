@@ -32,39 +32,89 @@
             <ul class="nav metismenu" id="side-menu">
                 <li class="nav-header">
                     <div class="dropdown profile-element">
-                        <img alt="image" class="rounded-circle" src="img/profile_small.jpg">
+                        <img alt="image" class="rounded-circle m-l-md-4" src="/images/profiles/user.png"
+                             style="width: 60px;height: 60px">
                         <a data-toggle="dropdown" class="dropdown-toggle" href="#">
-                            <span class="block m-t-xs font-bold">prenom nom</span>
-                            <span class="text-muted text-xs block">Art Director <b class="caret"></b></span>
+                            <span class="block m-t-xs font-bold">{{ app.user.prenom~' '~ app.user.nom }} </span>
                         </a>
-                        <ul class="dropdown-menu animated fadeInRight m-t-xs">
-                            <li><a class="dropdown-item" href="profile.html">Profile</a></li>
-                            <li><a class="dropdown-item" href="contacts.html">Contacts</a></li>
-                            <li><a class="dropdown-item" href="mailbox.html">Mailbox</a></li>
-                            <li class="dropdown-divider"></li>
-                            <li><a class="dropdown-item" href="login.html">Logout</a></li>
-                        </ul>
                     </div>
                     <div class="logo-element">
                         GM
                     </div>
                 </li>
-                <li class="landing_link">
-                    <a href=""><i class="fa fa-user"></i> <span class="nav-label">Liste des Patients</span></a>
-                </li>
-                <li class="special_link">
-                    <a href=""><i class="fa fa-money"></i> <span class="nav-label">Tickets</span></a>
-                </li>
-                <li class="special_link">
-                    <a href=""><i class="fa fa-plus"></i> <span class="nav-label">Ajouter Patient</span></a>
-                </li><li class="special_link">
-                    <a href=""><i class="fa fa-money"></i> <span class="nav-label">Constantes</span></a>
-                </li>
-            </ul>
+                {% if  is_granted('ROLE_INFIRMIER')%}
+                    <li>
+                        <a href="{{ path('infirmier_index') }}" aria-expanded="false">
+                            <i class="fa fa-user"></i>
+                            <span class="nav-label">Patients</span>
+                            <span class="fa arrow">
+                        </span></a>
+                    </li>
+                    <li>
+                        <a href="" aria-expanded="false">
+                            <i class="fa fa-medkit"></i>
+                            <span class="nav-label">Constante</span>
+                            <span class="fa arrow">
+                        </span></a>
+                        <ul class="nav nav-second-level collapse" aria-expanded="false" style="height: 0px;">
+                            <li>
+                                <a href="{{ path('constante_index') }}">
+                                    <i class="fa fa-list"></i>Liste des constante
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{ path('infirmier_patient_new') }}">
+                                    <i class="fa fa-stethoscope"></i>Ajouter constante
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
 
+                {% else %}
+
+                    <li>
+                        <a href="/admin/AIRstagram/utilisateur" aria-expanded="false">
+                            <i class="fa fa-user"></i>
+                            <span class="nav-label">Patients</span>
+                            <span class="fa arrow">
+                        </span></a>
+                        <ul class="nav nav-second-level collapse" aria-expanded="false" style="height: 0px;">
+                            <li>
+                                <a href="{{ path('patient_liste') }}">
+                                    <i class="fa fa-list"></i>Liste des Patient
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{ path('patient_new') }}">
+                                    <i class="fa fa-plus"></i>Ajouter Patient
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="/admin/AIRstagram/album">
+                            <i class="fa fa-folder"></i>
+                            <span class="nav-label">ALbums</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/admin/AIRstagram/photos">
+                            <i class="fa fa-picture-o"></i>
+                            <span class="nav-label">Photos</span>
+
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/admin/AIRstagram/signaler">
+                            <i class="fa fa-warning"></i>
+                            <span class="nav-label">Photos Signalées</span>
+
+                        </a>
+                    </li>
+                {% endif %}
+            </ul>
         </div>
     </nav>
-
     <div id="page-wrapper" class="gray-bg" style="min-height: 765px;">
         <div class="row border-bottom">
             <nav class="navbar navbar-static-top white-bg" role="navigation" style="margin-bottom: 0">
@@ -199,7 +249,7 @@
 
         <div class="wrapper wrapper-content">
 
-          {% block body%}
+            {% block body %}
 
             {% endblock %}
 

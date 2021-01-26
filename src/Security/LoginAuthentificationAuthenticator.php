@@ -122,7 +122,6 @@ class LoginAuthentificationAuthenticator extends AbstractFormLoginAuthenticator 
             $this->flashy->success(" Bienvenue " . $user->getUsername());
             return new RedirectResponse($this->urlGenerator->generate(''));
         }
-
     }
 
     protected function getLoginUrl()

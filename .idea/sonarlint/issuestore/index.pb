@@ -27,3 +27,13 @@ U
 %src/Controller/SecurityController.php,7/c/7cc876ecdb4df676c79a6188e9f3ac45e5079434
 S
 #src/Controller/TicketController.php,1/2/12ed1dfa837eea2de7757cdc90b9dd3ace57d32e
+X
+(src/Services/UserService/UserService.php,8/a/8afac112ed6f192ada977917f59d52cb00998091
+P
+ templates/docteur/show.html.twig,6/b/6bb27d1364d2a159574e00c140a69ad159c37464
+Q
+!templates/docteur/index.html.twig,b/3/b301908883a8bdef9bdb09d136d591a5d1c29334
+H
+templates/base.html.twig,f/f/ffb3f1cfd73fdec1f0c80c63d0b5bbc1fff22022
+S
+#templates/constante/index.html.twig,e/b/eb94935af294b260d2a1cbfe9992b6eccec874a7

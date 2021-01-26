@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Constante{% endblock %}
+
+{% block body %}
+    <h1>Constante</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ constante.id }}</td>
+            </tr>
+            <tr>
+                <th>Tension</th>
+                <td>{{ constante.tension }}</td>
+            </tr>
+            <tr>
+                <th>Pression</th>
+                <td>{{ constante.pression }}</td>
+            </tr>
+            <tr>
+                <th>Pouls</th>
+                <td>{{ constante.pouls }}</td>
+            </tr>
+            <tr>
+                <th>Temperature</th>
+                <td>{{ constante.temperature }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('constante_index') }}">back to list</a>
+
+    <a href="{{ path('constante_edit', {'id': constante.id}) }}">edit</a>
+
+    {{ include('constante/_delete_form.html.twig') }}
+{% endblock %}

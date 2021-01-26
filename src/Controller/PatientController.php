@@ -3,8 +3,11 @@
 namespace App\Controller;
 
 use App\Entity\Patient;
+use App\Entity\User;
 use App\Form\PatientType;
 use App\Repository\PatientRepository;
+use Cassandra\Type\UserType;
+use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -16,12 +19,17 @@ use Symfony\Component\Routing\Annotation\Route;
 class PatientController extends AbstractController
 {
     /**
-     * @Route("/", name="patient_index", methods={"GET"})
+     * @Route("/", name="patient_liste", methods={"GET"})
      */
-    public function index(PatientRepository $patientRepository): Response
+    public function index(PatientRepository $patientRepository, PaginatorInterface $paginator, Request $request): Response
     {
+        $patients = $paginator->paginate(
+            $patientRepository->findAll(), /* query NOT result */
+            $request->query->getInt('page', 1), /*page number*/
+            5 /*limit per page*/
+        );
         return $this->render('patient/index.html.twig', [
-            'patients' => $patientRepository->findAll(),
+            'patients' => $patients,
         ]);
     }
 
@@ -31,7 +39,8 @@ class PatientController extends AbstractController
     public function new(Request $request): Response
     {
         $patient = new Patient();
-        $form = $this->createForm(PatientType::class, $patient);
+        $user = new User();
+        $form = $this->createForm(UserType::class, $user);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -39,7 +48,7 @@ class PatientController extends AbstractController
             $entityManager->persist($patient);
             $entityManager->flush();
 
-            return $this->redirectToRoute('patient_index');
+            return $this->redirectToRoute('patient_liste');
         }
 
         return $this->render('patient/new.html.twig', [
@@ -69,7 +78,7 @@ class PatientController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('patient_index');
+            return $this->redirectToRoute('patient_liste');
         }
 
         return $this->render('patient/edit.html.twig', [

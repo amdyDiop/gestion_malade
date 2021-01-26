@@ -28,9 +28,10 @@ class User implements UserInterface
      */
     private $roles = [];
 
+
     /**
      * @var string The hashed password
-     * @ORM\Column(type="string")
+     * @ORM\Column(type="string", nullable=true)
      */
     private $password;
 
@@ -112,7 +113,6 @@ class User implements UserInterface
 
         return $this;
     }
-
     /**
      * A visual identifier that represents this user.
      *
@@ -122,7 +122,6 @@ class User implements UserInterface
     {
         return (string) $this->email;
     }
-
     /**
      * @see UserInterface
      */
