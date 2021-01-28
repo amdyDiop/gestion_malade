@@ -19,22 +19,22 @@ class InfirmierRepository extends ServiceEntityRepository
         parent::__construct($registry, Infirmier::class);
     }
 
-    // /**
-    //  * @return Infirmier[] Returns an array of Infirmier objects
-    //  */
-    /*
-    public function findByExampleField($value)
+     /**
+      * @return Infirmier[] Returns an array of Infirmier objects
+      */
+
+    public function findByUserId($email)
     {
-        return $this->createQueryBuilder('i')
-            ->andWhere('i.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('i.id', 'ASC')
-            ->setMaxResults(10)
-            ->getQuery()
-            ->getResult()
-        ;
+        $entityManager = $this->getEntityManager();
+        $query = $entityManager->createQuery(
+            'SELECT i
+        FROM App\Entity\Infirmier i
+        JOIN i.user u
+        WHERE u.email =:email'
+        )->setParameter('email', $email);
+        return $query->getResult();
     }
-    */
+
 
     /*
     public function findOneBySomeField($value): ?Infirmier

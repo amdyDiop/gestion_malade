@@ -20,43 +20,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4756cee9-6cc9-452e-9522-494fc0f82d3a" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/config/packages/knp_paginator.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Controller/ConstanteController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Controller/UserController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Form/ConstanteType.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Form/UserType.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Services/UserService/UserService.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/constante/_delete_form.html.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/constante/_form.html.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/constante/edit.html.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/constante/index.html.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/constante/new.html.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/constante/show.html.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/user/_delete_form.html.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/user/_form.html.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/user/edit.html.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/user/index.html.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/user/new.html.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/user/show.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/gestionMalade.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gestionMalade.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/7/c/7cc876ecdb4df676c79a6188e9f3ac45e5079434" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/7/c/7cc876ecdb4df676c79a6188e9f3ac45e5079434" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/8/a/8afac112ed6f192ada977917f59d52cb00998091" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/8/a/8afac112ed6f192ada977917f59d52cb00998091" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/bundles.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/bundles.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/InfirmierController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/InfirmierController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/PatientController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/PatientController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/User.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Security/LoginAuthentificationAuthenticator.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Security/LoginAuthentificationAuthenticator.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/symfony.lock" beforeDir="false" afterPath="$PROJECT_DIR$/symfony.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/ConstanteController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/ConstanteController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/SecurityController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/SecurityController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Form/ConstanteType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/ConstanteType.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Repository/InfirmierRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/InfirmierRepository.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/base.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/constante/_form.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/constante/_form.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/constante/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/constante/index.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/infirmier/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/infirmier/index.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/patient/_delete_form.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/patient/_delete_form.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/patient/_form.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/patient/_form.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/patient/edit.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/patient/edit.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/patient/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/patient/index.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/patient/new.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/patient/new.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -69,6 +44,14 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
   </component>
   <component name="PhpWorkspaceProjectConfiguration">
     <include_path>
@@ -231,7 +214,10 @@
       <workItem from="1608985539019" duration="2724000" />
       <workItem from="1608988421846" duration="13630000" />
       <workItem from="1609033957823" duration="40000" />
-      <workItem from="1611599511814" duration="7087000" />
+      <workItem from="1611599511814" duration="10003000" />
+      <workItem from="1611675849567" duration="695000" />
+      <workItem from="1611677760080" duration="3627000" />
+      <workItem from="1611696819806" duration="539000" />
     </task>
     <servers />
   </component>

@@ -37,3 +37,21 @@ H
 templates/base.html.twig,f/f/ffb3f1cfd73fdec1f0c80c63d0b5bbc1fff22022
 S
 #templates/constante/index.html.twig,e/b/eb94935af294b260d2a1cbfe9992b6eccec874a7
+O
+templates/patient/new.html.twig,4/9/4946a972011112ab1ab7ae1cfc2157247ce8839e
+X
+(templates/patient/_delete_form.html.twig,8/9/89bea3cda01ac0ea7307a0e355c3a5d5da22f1bf
+P
+ templates/patient/edit.html.twig,3/3/33455e22976c7d1474bf344b1c27122fd9c6398f
+H
+src/Form/PatientType.php,c/d/cd4233685d8f1f6ed0be1f7eee3feb6d4cab708f
+Q
+!templates/patient/_form.html.twig,d/4/d47322cdd31b346a655b2245ac2f88314815313e
+Q
+!templates/patient/index.html.twig,2/d/2dcafa26ee761d0a18c6e031718681013fe81d8a
+J
+src/Form/ConstanteType.php,6/3/6308ee9b877f4c4b363b53206b8521c1604a8a0b
+V
+&src/Controller/ConstanteController.php,1/3/13e3f907c0ad3a14091c4e000fa83deb2f64f508
+V
+&src/Repository/InfirmierRepository.php,8/b/8b24f08f52ac9dceb64039cc8df3b5671e931324

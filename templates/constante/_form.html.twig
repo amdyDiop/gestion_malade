@@ -1,4 +1,25 @@
 {{ form_start(form) }}
-    {{ form_widget(form) }}
-    <button class="btn">{{ button_label|default('Save') }}</button>
+<div class="card">
+    <div class="card-body">
+        <div class="row">
+            <div class="form-group col-md-6">
+                {{ form_row(form.temperature) }}
+            </div>
+            <div class="form-group col-md-6">
+                {{ form_row(form.tension) }}
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-md-6">
+                {{ form_row(form.pouls) }}
+            </div>
+            <div class="form-group col-md-6">
+                {{ form_row(form.pression) }}
+            </div>
+        </div>
+    </div>
+    <div class="card-footer">
+        <button class="btn btn-primary pull-right">Enregistrer</button>
+    </div>
+</div>
 {{ form_end(form) }}

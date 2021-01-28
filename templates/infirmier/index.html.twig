@@ -3,26 +3,11 @@
 {% block title %}Infirmier {% endblock %}
 {% block body %}
     <div class="wrapper wrapper-content">
-
         <div class="wrapper wrapper-content animated fadeInRight">
             <div class="row">
                 <div class="col-lg-12">
                     <div class="ibox ">
-                        <div class="ibox-title">
-                            <div class="ibox-tools">
-                                <a class="collapse-link">
-                                    <i class="fa fa-chevron-up"></i>
-                                </a>
-                                <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                                    <i class="fa fa-wrench"></i>
-                                </a>
-                                <a class="close-link">
-                                    <i class="fa fa-times"></i>
-                                </a>
-                            </div>
-                        </div>
                         <div class="ibox-content">
-
                             <div class="table-responsive">
                                 <div id="DataTables_Table_0_wrapper"
                                      class="dataTables_wrapper container-fluid dt-bootstrap4">
@@ -35,23 +20,16 @@
                                                aria-controls="DataTables_Table_0" href="#"><span>Imprimer</span>
                                             </a>
                                             <a class="btn btn-default buttons-print" tabindex="0"
-                                               aria-controls="DataTables_Table_0" href="{{ path('infirmier_patient_new') }}" ><span>Ajouter Patient</span>
+                                               aria-controls="DataTables_Table_0"
+                                               href="{{ path('infirmier_patient_new') }}"><span>Ajouter Patient</span>
                                             </a>
                                         </div>
                                     </div>
-                                    <div class="dataTables_length" id="DataTables_Table_0_length"><label>Fitre <select
-                                                    name="DataTables_Table_0_length" aria-controls="DataTables_Table_0"
-                                                    class="form-control form-control-sm">
-                                                <option value="10">10</option>
-                                                <option value="25">25</option>
-                                                <option value="50">50</option>
-                                                <option value="100">100</option>
-                                            </select> entries</label></div>
                                     <div id="DataTables_Table_0_filter" class="dataTables_filter">
-                                        <label>Recherche:<input type="search" class="form-control form-control-sm"
-                                                                placeholder=""
-                                                                aria-controls="DataTables_Table_0"></label></div>
-                                    i
+                                        <label>Recherche:<input type="search" id="search"
+                                                                class="form-control form-control-sm">
+                                        </label>
+                                    </div>
                                     <table class=" text-center table table-striped table-bordered table-hover dataTables-example dataTable"
                                            id="DataTables_Table_0" aria-describedby="DataTables_Table_0_info"
                                            role="grid">
@@ -66,10 +44,9 @@
                                             <th rowspan="1" colspan="1">Actions</th>
                                         </tr>
                                         </thead>
-                                        <tbody>
+                                        <tbody id="result">
                                         {% for patient in patients %}
                                             <tr class="gradeA even" role="row">
-
                                                 <td class="">{{ patient.id }}</td>
                                                 <td class="">{{ patient.user.prenom }}</td>
                                                 <td class="">{{ patient.user.nom }}</td>
@@ -77,7 +54,7 @@
                                                 <td class="center sorting_1">{{ patient.user.telephone }}</td>
                                                 <td class="center sorting_1">{{ patient.user.cni }}</td>
                                                 <td class="center sorting_1">
-                                                    <a  href="" >
+                                                    <a href="{{ path('constante_new',{id: patient.id}) }}">
                                                         <button class=" btn btn-bitbucket btn-primary"><i
                                                                     class="fa fa-stethoscope "></i></button>
                                                     </a>
@@ -88,7 +65,6 @@
                                                 </td>
                                             </tr>
                                         {% endfor %}
-
                                         </tbody>
                                         <tfoot>
                                         <tr>
@@ -105,7 +81,6 @@
                                     <div class="dataTables_paginate paging_simple_numbers"
                                          id="DataTables_Table_0_paginate">
                                         <div class="navigation">
-
                                         </div>
                                     </div>
                                 </div>
@@ -118,4 +93,59 @@
         </div>
     </div>
 
+    {% block script %}
+        <script>
+            $(document).ready(function () {
+                var search = $('#search');
+                var result = $('#result ');
+                search.on('keyup', (function () {
+                    var value = search.val()
+                    console.log(value)
+                    $.ajax({
+                        url: '{{ path('patient_search') }}',
+                        type: 'post',
+                        data: {search: value},
+                        dataType: 'json',
+                        success: function (data) {
+                            console.log(data);
+                            result.html('')
+                            printdata(data, result)
+                        }, error: function (data) {
+                            alert('erreur lors de la récupération des donnée');
+                            console.log(data);
+                        }
+
+                    });
+
+                    function printdata(data, result) {
+
+                        $.each(JSON.parse(data), function (index, patient) {
+                            console.log(patient)
+                            result.append(`
+                            <tr class="gradeA even" role="row">
+                                                <td class="">${patient.id}</td>
+                                                <td class="">${patient.prenom}</td>
+                                                <td class="">${patient.nom}</td>
+                                                <td class="center">${moment(patient.dateNaiss).format('DD/MM/YYYY')}</td>
+                                                <td class="center sorting_1">${patient.telephone}</td>
+                                                <td class="center sorting_1">${patient.cni}</td>
+                                                <td class="center sorting_1">
+                                                    <a href="constante/patient/${patient.id}">
+                                                        <button class=" btn btn-bitbucket btn-primary"><i
+                                                                    class="fa fa-stethoscope "></i></button>
+                                                    </a>
+                                                    <a href="infirmier/patient/${patient.id}/edit">
+                                                        <button class=" btn btn-bitbucket btn-primary"><i
+                                                                    class="fa fa-edit"></i></button>
+                                                    </a>
+                                                </td>
+                                            </tr>
+
+                            `);
+                        });
+                    }
+                }));
+            });
+        </script>
+    {% endblock %}
 {% endblock %}

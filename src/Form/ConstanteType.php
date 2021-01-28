@@ -16,8 +16,6 @@ class ConstanteType extends AbstractType
             ->add('pression')
             ->add('pouls')
             ->add('temperature')
-            ->add('infirmier')
-            ->add('patient')
         ;
     }
 

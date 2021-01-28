@@ -4,37 +4,98 @@
 
 {% block body %}
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Tension</th>
-                <th>Pression</th>
-                <th>Pouls</th>
-                <th>Temperature</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for constante in constantes %}
-            <tr>
-                <td>{{ constante.id }}</td>
-                <td>{{ constante.tension }}</td>
-                <td>{{ constante.pression }}</td>
-                <td>{{ constante.pouls }}</td>
-                <td>{{ constante.temperature }}</td>
-                <td>
-                    <a href="{{ path('constante_show', {'id': constante.id}) }}">show</a>
-                    <a href="{{ path('constante_edit', {'id': constante.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="6">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+    <div class="wrapper wrapper-content">
+        <div class="wrapper wrapper-content animated fadeInRight">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="ibox ">
+                        <div class="ibox-title">
+                            <div class="ibox-tools">
+                                <a class="collapse-link">
+                                    <i class="fa fa-chevron-up"></i>
+                                </a>
+                                <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                                    <i class="fa fa-wrench"></i>
+                                </a>
+                                <a class="close-link">
+                                    <i class="fa fa-times"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="ibox-content">
+                            <div class="table-responsive">
+                                <div id="DataTables_Table_0_wrapper"
+                                     class="dataTables_wrapper container-fluid dt-bootstrap4">
+                                    <div class="dataTables_length" id="DataTables_Table_0_length"><label>Fitre <select
+                                                    name="DataTables_Table_0_length" aria-controls="DataTables_Table_0"
+                                                    class="form-control form-control-sm">
+                                                <option value="10">10</option>
+                                                <option value="25">25</option>
+                                                <option value="50">50</option>
+                                                <option value="100">100</option>
+                                            </select></label></div>
+                                    <div id="DataTables_Table_0_filter" class="dataTables_filter">
+                                        <label>Recherche:<input type="search" class="form-control form-control-sm"
+                                                                id="search"></label></div>
+                                    <table class=" text-center table table-striped table-bordered table-hover dataTables-example dataTable"
+                                           id="DataTables_Table_0" aria-describedby="DataTables_Table_0_info"
+                                           role="grid">
+                                        <thead>
+                                        <tr role="row">
+                                            <th rowspan="1" colspan="1">Tenssion</th>
+                                            <th rowspan="1" colspan="1">Température</th>
+                                            <th rowspan="1" colspan="1">Pression</th>
+                                            <th rowspan="1" colspan="1">Poule</th>
+                                            <th rowspan="1" colspan="1">Patient</th>
+                                            <th rowspan="1" colspan="1">Infirmier</th>
+                                            <th rowspan="1" colspan="1">Actions</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody id="result">
+                                        {% for constante in constantes %}
+                                            <tr class="gradeA even" role="row">
+                                                <td class="">{{ constante.tension }}</td>
+                                                <td class="">{{ constante.temperature }}</td>
+                                                <td class="">{{ constante.pression }}</td>
+                                                <td class="center">{{ constante.pouls }}</td>
+                                                <td class="center sorting_1">{{ constante.patient.user.cni }}</td>
+                                                <td class="center sorting_1">{{ constante.infirmier.user.prenom }}</td>
+                                                <td class="center sorting_1">
+                                                    <a href="{{ path('constante_edit',{id: constante.id}) }}">
+                                                        <button class=" btn btn-bitbucket btn-primary pull-right"><i
+                                                                    class="fa fa-edit "></i></button>
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                        {% endfor %}
 
-    <a href="{{ path('constante_new') }}">Create new</a>
+                                        </tbody>
+                                        <tfoot>
+                                        <tr role="row">
+                                            <th rowspan="1" colspan="1">Tenssion</th>
+                                            <th rowspan="1" colspan="1">Température</th>
+                                            <th rowspan="1" colspan="1">Pression</th>
+                                            <th rowspan="1" colspan="1">Poule</th>
+                                            <th rowspan="1" colspan="1">Patient</th>
+                                            <th rowspan="1" colspan="1">Infirmier</th>
+                                            <th rowspan="1" colspan="1">Actions</th>
+                                        </tr>
+                                        </tfoot>
+                                    </table>
+                                    <div class="dataTables_paginate paging_simple_numbers"
+                                         id="DataTables_Table_0_paginate">
+                                        <div class="navigation">
+                                            {{ knp_pagination_render(constantes) }}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
 {% endblock %}

@@ -27,6 +27,7 @@ class InfirmierController extends AbstractController
 
     function __construct(InfirmierRepository $infirmierRep, PatientRepository $patientRep)
     {
+
         $this->patientRep = $patientRep;
         $this->infirmierRep = $infirmierRep;
     }
@@ -34,7 +35,7 @@ class InfirmierController extends AbstractController
     /**
      * @Route("/", name="infirmier_index", methods={"GET"})
      */
-    public function index(): Response
+    public function index( ): Response
     {
         return $this->render('infirmier/index.html.twig', [
             'patients' => $this->patientRep->findAll(),

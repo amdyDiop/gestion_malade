@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Patient;
 use App\Entity\User;
 use App\Form\PatientType;
+use App\Repository\AmisRepository;
 use App\Repository\PatientRepository;
 use Cassandra\Type\UserType;
 use Knp\Component\Pager\PaginatorInterface;
@@ -12,6 +13,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Serializer\SerializerInterface;
 
 /**
  * @Route("/patient")
@@ -97,7 +99,33 @@ class PatientController extends AbstractController
             $entityManager->remove($patient);
             $entityManager->flush();
         }
-
-        return $this->redirectToRoute('patient_index');
+        return $this->redirectToRoute('patient_liste');
     }
+
+    /**
+     * @Route("/search", name="patient_search",methods={"GET","POST"})
+     */
+    public function search(Request $request, PatientRepository  $patientRep,SerializerInterface  $serializer)
+    {
+        if ($request->isXmlHttpRequest()) {
+            $value = $request->get('search');
+            if ($value == null){
+                $data = $patientRep->findAll();
+            }
+            else{
+                $data = $patientRep->patientSearch($value);
+            }
+        }
+        if ($data){
+            $user =[];
+            foreach ($data as $value){
+                $user[] =$value->getUser();
+            }
+            $patient= $serializer->serialize($user, 'json',['groups'=>'patient']);
+            return $this->json($patient,200);
+        }
+        $patient= $serializer->serialize($data, 'json',['groups'=>'patient']);
+        return $this->json($patient,200);
+    }
+
 }
