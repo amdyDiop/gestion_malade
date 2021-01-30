@@ -12,7 +12,7 @@ class ConstanteType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('tension')
+            ->add('tenssion')
             ->add('pression')
             ->add('pouls')
             ->add('temperature')

@@ -19,6 +19,22 @@ class ConstanceRepository extends ServiceEntityRepository
         parent::__construct($registry, Constante::class);
     }
 
+    public function constanteSearch($valeur)
+    {
+        $qb = $this->createQueryBuilder('c')
+            ->join('c.patient', 'p')
+            ->join('p.user', 'u')
+            ->andWhere('u.roles  =:role')
+            ->orWhere('u.prenom LIKE :prenom')
+            ->orWhere('u.cni LIKE :cni')
+            ->orWhere('u.nom LIKE :nom')
+            ->setParameter('role', 'ROLE_PATIENT')
+            ->setParameter('prenom', '%' . $valeur . '%')
+            ->setParameter('cni', '%' . $valeur . '%')
+            ->setParameter('nom', '%' . $valeur . '%');
+        return $qb->getQuery()->execute();
+    }
+
     // /**
     //  * @return Constante[] Returns an array of Constante objects
     //  */

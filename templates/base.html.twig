@@ -42,7 +42,7 @@
                         GM
                     </div>
                 </li>
-                {% if  is_granted('ROLE_INFIRMIER')%}
+                {% if  is_granted('ROLE_INFIRMIER') %}
                     <li>
                         <a href="{{ path('infirmier_index') }}" aria-expanded="false">
                             <i class="fa fa-user"></i>
@@ -64,11 +64,9 @@
                             </li>
                         </ul>
                     </li>
-
-                {% else %}
-
+                {% elseif   is_granted('ROLE_CAISSIER') %}
                     <li>
-                        <a href="/admin/AIRstagram/utilisateur" aria-expanded="false">
+                        <a href="" aria-expanded="false">
                             <i class="fa fa-user"></i>
                             <span class="nav-label">Patients</span>
                             <span class="fa arrow">
@@ -87,25 +85,12 @@
                         </ul>
                     </li>
                     <li>
-                        <a href="/admin/AIRstagram/album">
+                        <a href="#">
                             <i class="fa fa-folder"></i>
-                            <span class="nav-label">ALbums</span>
+                            <span class="nav-label">Tickets</span>
                         </a>
                     </li>
-                    <li>
-                        <a href="/admin/AIRstagram/photos">
-                            <i class="fa fa-picture-o"></i>
-                            <span class="nav-label">Photos</span>
-
-                        </a>
-                    </li>
-                    <li>
-                        <a href="/admin/AIRstagram/signaler">
-                            <i class="fa fa-warning"></i>
-                            <span class="nav-label">Photos Signalées</span>
-
-                        </a>
-                    </li>
+                    {% else %}
                 {% endif %}
             </ul>
         </div>
@@ -130,11 +115,8 @@
                         </a>
                     </li>
                 </ul>
-
             </nav>
         </div>
-
-
         <div class="wrapper wrapper-content">
 
             {% block body %}

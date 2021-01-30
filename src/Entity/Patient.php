@@ -24,7 +24,7 @@ class Patient
     /**
      * @ORM\OneToOne(targetEntity=User::class, inversedBy="patient", cascade={"persist", "remove"})
      * @ORM\JoinColumn(nullable=false)
-     * @Groups ({"patient"})
+     * @Groups ({"patient","constante"})
      */
     private $user;
 

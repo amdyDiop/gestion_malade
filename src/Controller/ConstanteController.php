@@ -12,24 +12,30 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Serializer\SerializerInterface;
 
 /**
  * @Route("/infirmier/constante")
  */
 class ConstanteController extends AbstractController
 {
+    private $constanteRep;
+
+    function __construct(ConstanceRepository $constanteRep)
+    {
+        $this->constanteRep = $constanteRep;
+    }
 
     /**
      * @Route("/", name="constante_index", methods={"GET"})
      */
-    public function index( Request  $request,PaginatorInterface $paginator,ConstanceRepository $constanceRepository): Response
+    public function index(Request $request, PaginatorInterface $paginator): Response
     {
         $constantes = $paginator->paginate(
-            $constanceRepository->findAll(), /* query NOT result */
+            $this->constanteRep->findAll(), /* query NOT result */
             $request->query->getInt('page', 1), /*page number*/
-            1 /*limit per page*/
+            2 /*limit per page*/
         );
-
         return $this->render('constante/index.html.twig', [
             'constantes' => $constantes,
         ]);
@@ -38,7 +44,7 @@ class ConstanteController extends AbstractController
     /**
      * @Route("/patient/{id}", name="constante_new", methods={"GET","POST"})
      */
-    public function new( int $id,Request $request, PatientRepository $patientRep, InfirmierRepository $infirmierRep): Response
+    public function addConstante(int $id, Request $request, PatientRepository $constanteRep, InfirmierRepository $infirmierRep): Response
     {
         $constante = new Constante();
         $form = $this->createForm(ConstanteType::class, $constante);
@@ -46,7 +52,7 @@ class ConstanteController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $email = $this->getUser()->getUsername();
             $infirmier = $infirmierRep->findByUserId($email);
-            $patient = $patientRep->find($id);
+            $patient = $constanteRep->find($id);
             $constante->setPatient($patient);
             $constante->setInfirmier($infirmier[0]);
             $entityManager = $this->getDoctrine()->getManager();
@@ -104,4 +110,27 @@ class ConstanteController extends AbstractController
 
         return $this->redirectToRoute('constante_index');
     }
+
+
+    /**
+     * @Route("/search", name="constante_search",methods={"GET","POST"})
+     */
+    public function search(Request $request, SerializerInterface $serializer, ConstanceRepository $constanceRepository)
+    {
+        if ($request->isXmlHttpRequest()) {
+            $value = $request->get('search');
+            if ($value == null) {
+                $data = $this->constanteRep->findAll();
+                $constante = $serializer->serialize($data, 'json', ['groups' => 'constante']);
+                return $this->json($constante, 200);
+            } else {
+                $data = $this->constanteRep->constanteSearch($value);
+                $constante = $serializer->serialize($data, 'json', ['groups' => 'constante']);
+                return $this->json($constante, 200);
+
+
+            }
+        }
+    }
+
 }

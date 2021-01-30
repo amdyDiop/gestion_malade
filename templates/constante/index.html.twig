@@ -26,14 +26,6 @@
                             <div class="table-responsive">
                                 <div id="DataTables_Table_0_wrapper"
                                      class="dataTables_wrapper container-fluid dt-bootstrap4">
-                                    <div class="dataTables_length" id="DataTables_Table_0_length"><label>Fitre <select
-                                                    name="DataTables_Table_0_length" aria-controls="DataTables_Table_0"
-                                                    class="form-control form-control-sm">
-                                                <option value="10">10</option>
-                                                <option value="25">25</option>
-                                                <option value="50">50</option>
-                                                <option value="100">100</option>
-                                            </select></label></div>
                                     <div id="DataTables_Table_0_filter" class="dataTables_filter">
                                         <label>Recherche:<input type="search" class="form-control form-control-sm"
                                                                 id="search"></label></div>
@@ -46,7 +38,7 @@
                                             <th rowspan="1" colspan="1">Température</th>
                                             <th rowspan="1" colspan="1">Pression</th>
                                             <th rowspan="1" colspan="1">Poule</th>
-                                            <th rowspan="1" colspan="1">Patient</th>
+                                            <th rowspan="1" colspan="1">Cni Patient</th>
                                             <th rowspan="1" colspan="1">Infirmier</th>
                                             <th rowspan="1" colspan="1">Actions</th>
                                         </tr>
@@ -54,7 +46,7 @@
                                         <tbody id="result">
                                         {% for constante in constantes %}
                                             <tr class="gradeA even" role="row">
-                                                <td class="">{{ constante.tension }}</td>
+                                                <td class="">{{ constante.tenssion }}</td>
                                                 <td class="">{{ constante.temperature }}</td>
                                                 <td class="">{{ constante.pression }}</td>
                                                 <td class="center">{{ constante.pouls }}</td>
@@ -75,8 +67,8 @@
                                             <th rowspan="1" colspan="1">Tenssion</th>
                                             <th rowspan="1" colspan="1">Température</th>
                                             <th rowspan="1" colspan="1">Pression</th>
-                                            <th rowspan="1" colspan="1">Poule</th>
-                                            <th rowspan="1" colspan="1">Patient</th>
+                                            <th rowspan="1" colspan="1">Pouls</th>
+                                            <th rowspan="1" colspan="1">Cni Patient</th>
                                             <th rowspan="1" colspan="1">Infirmier</th>
                                             <th rowspan="1" colspan="1">Actions</th>
                                         </tr>
@@ -90,12 +82,63 @@
                                     </div>
                                 </div>
                             </div>
-
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+    {% block script %}
+        <script>
+            $(document).ready(function () {
+                var search = $('#search');
+                var result = $('#result ');
+                search.on('keyup', (function () {
+                    var value = search.val()
+                    $.ajax({
+                        url: '{{ path('constante_search') }}',
+                        type: 'post',
+                        data: {search: value},
+                        dataType: 'json',
+                        success: function (data) {
+                            result.html('')
+                            printdata(data, result)
+                        }, error: function (data) {
+                            alert('erreur lors de la récupération des donnée');
+                            console.log(data);
+                        }
 
+                    });
+
+                    function printdata(data, result) {
+
+                        $.each(JSON.parse(data), function (index, constante) {
+                            console.log(constante)
+                            result.append(`
+                            <tr class="gradeA even" role="row">
+                                                <td class="">${constante.tenssion}</td>
+                                                <td class="">${constante.temperature}</td>
+                                                <td class="">${constante.pression}</td>
+                                                <td class="center">${constante.pouls}</td>
+                                                <td class="center">${constante.patient.user.cni}</td>
+                                                <td class="center">${constante.infirmier.user.prenom + ' ' + constante.infirmier.user.nom}</td>
+                                                <td class="center sorting_1">
+                                                    <a href="infirmier/constante/${constante.id}">
+                                                        <button class=" btn btn-bitbucket btn-primary"><i
+                                                                    class="fa fa-stethoscope "></i></button>
+                                                    </a>
+                                                    <a href="infirmier/constante/${constante.id}/edit">
+                                                        <button class=" btn btn-bitbucket btn-primary"><i
+                                                                    class="fa fa-edit"></i></button>
+                                                    </a>
+                                                </td>
+                                            </tr>
+
+                            `);
+                        });
+                    }
+                }));
+            });
+        </script>
+    {% endblock %}
 {% endblock %}

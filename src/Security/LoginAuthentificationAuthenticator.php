@@ -116,7 +116,7 @@ class LoginAuthentificationAuthenticator extends AbstractFormLoginAuthenticator 
         }
         else if ($user->getRoles()[0] == "ROLE_CAISSIER") {
             $this->flashy->success(" Bienvenue " . $user->getUsername());
-            return new RedirectResponse($this->urlGenerator->generate('home'));
+            return new RedirectResponse($this->urlGenerator->generate('ticket_index'));
         }
         else if ($user->getRoles()[0] == "ROLE_ADMIN") {
             $this->flashy->success(" Bienvenue " . $user->getUsername());

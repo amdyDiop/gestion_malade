@@ -100,14 +100,12 @@
                 var result = $('#result ');
                 search.on('keyup', (function () {
                     var value = search.val()
-                    console.log(value)
                     $.ajax({
                         url: '{{ path('patient_search') }}',
                         type: 'post',
                         data: {search: value},
                         dataType: 'json',
                         success: function (data) {
-                            console.log(data);
                             result.html('')
                             printdata(data, result)
                         }, error: function (data) {
@@ -140,7 +138,6 @@
                                                     </a>
                                                 </td>
                                             </tr>
-
                             `);
                         });
                     }

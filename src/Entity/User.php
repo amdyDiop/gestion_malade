@@ -16,7 +16,7 @@ class User implements UserInterface
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
-     *  @Groups ({"patient"})
+     *  @Groups ({"patient","constante"})
      */
     private $id;
 
@@ -40,13 +40,13 @@ class User implements UserInterface
 
     /**
      * @ORM\Column(type="string", length=255)
-     *  @Groups ({"patient"})
+     *  @Groups ({"patient","constante"})
      */
     private $prenom;
 
     /**
      * @ORM\Column(type="string", length=255)
-     *  @Groups ({"patient"})
+     *  @Groups ({"patient","constante"})
      */
     private $nom;
 
@@ -58,7 +58,7 @@ class User implements UserInterface
 
     /**
      * @ORM\Column(type="string", length=255)
-     *  @Groups ({"patient"})
+     *  @Groups ({"patient","constante"})
      */
     private $cni;
 

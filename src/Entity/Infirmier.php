@@ -6,6 +6,7 @@ use App\Repository\InfirmierRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ORM\Entity(repositoryClass=InfirmierRepository::class)
@@ -16,12 +17,14 @@ class Infirmier
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
+     * @Groups ({"constante"})
      */
     private $id;
 
     /**
      * @ORM\OneToOne(targetEntity=User::class, inversedBy="infirmier", cascade={"persist", "remove"})
      * @ORM\JoinColumn(nullable=false)
+     * @Groups ({"constante"})
      */
     private $user;
 

@@ -101,7 +101,6 @@ class PatientController extends AbstractController
         }
         return $this->redirectToRoute('patient_liste');
     }
-
     /**
      * @Route("/search", name="patient_search",methods={"GET","POST"})
      */
@@ -127,5 +126,4 @@ class PatientController extends AbstractController
         $patient= $serializer->serialize($data, 'json',['groups'=>'patient']);
         return $this->json($patient,200);
     }
-
 }
