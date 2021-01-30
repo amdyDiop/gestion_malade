@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Repository\TicketRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=TicketRepository::class)
@@ -24,6 +25,7 @@ class Ticket
 
     /**
      * @ORM\Column(type="integer")
+     * @Assert\NotBlank(message="le montant est obligatoire")
      */
     private $montant;
 
@@ -39,11 +41,18 @@ class Ticket
      */
     private $patient;
     /**
-     * @ORM\ManyToOne(targetEntity=TypeVisite::class, inversedBy="ticket")
+     * @ORM\ManyToOne(targetEntity=TypeVisite::class, inversedBy="ticket",cascade="persist")
+     * @Assert\NotNull(message="le type de visite est obligatoire")
      * @ORM\JoinColumn(nullable=false)
      */
+
     private $typeVisite;
 
+
+    function __construct()
+    {
+        $this->createdAt = new \DateTime();
+    }
     public function getId(): ?int
     {
         return $this->id;

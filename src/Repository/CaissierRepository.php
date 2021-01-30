@@ -19,6 +19,19 @@ class CaissierRepository extends ServiceEntityRepository
         parent::__construct($registry, Caissier::class);
     }
 
+
+    public function findByUserEmail($email)
+    {
+        $entityManager = $this->getEntityManager();
+        $query = $entityManager->createQuery(
+            'SELECT c
+        FROM App\Entity\Caissier c
+        JOIN c.user u
+        WHERE u.email =:email'
+        )->setParameter('email', $email);
+        return $query->getResult();
+    }
+
     // /**
     //  * @return Caissier[] Returns an array of Caissier objects
     //  */

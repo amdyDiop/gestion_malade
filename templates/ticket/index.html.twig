@@ -3,7 +3,6 @@
 {% block title %}Ticket index{% endblock %}
 
 {% block body %}
-    <h1>Ticket index</h1>
     <div class="row wrapper border-bottom white-bg page-heading">
         <div class="col-lg-10">
             <h2>Liste Des ticket</h2>
@@ -44,24 +43,11 @@
                                  class="dataTables_wrapper container-fluid dt-bootstrap4">
                                 <div class="html5buttons">
                                     <div class="dt-buttons btn-group">
-                                        <a class="btn btn-default buttons-pdf buttons-html5" tabindex="0"
-                                           aria-controls="DataTables_Table_0" href="#"><span>PDF</span>
-                                        </a>
                                         <a class="btn btn-default buttons-print" tabindex="0"
-                                           aria-controls="DataTables_Table_0" href="#"><span>Imprimer</span>
-                                        </a>
-                                        <a class="btn btn-default buttons-print" tabindex="0"
-                                           aria-controls="DataTables_Table_0" href="#"><span>Ajouter Patient</span>
+                                           aria-controls="DataTables_Table_0" href="#"><span>Ajouter ticket</span>
                                         </a>
                                     </div>
                                 </div>
-                                <div class="dataTables_length" id="DataTables_Table_0_length"><label>Fitre <select
-                                                name="DataTables_Table_0_length" aria-controls="DataTables_Table_0"
-                                                class="form-control form-control-sm">
-                                            <option value="10">10</option>
-                                            <option value="25">25</option>
-                                            <option value="50">50</option>
-                                        </select> entries</label></div>
                                 <div id="DataTables_Table_0_filter" class="dataTables_filter"><label>Recherche:<input
                                                 type="search" class="form-control form-control-sm" placeholder=""
                                                 aria-controls="DataTables_Table_0"></label></div>
@@ -78,18 +64,21 @@
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    <tr class="gradeA even" role="row">
-                                        <td class="">23/11/2020</td>
-                                        <td class="">3000</td>
-                                        <td class="">visite Médical</td>
-                                        <td class="center">5945649456</td>
-                                        <td class="center sorting_1">1728199300954</td>
-                                        <td class="center sorting_1">
-                                            <button class=" btn btn-primary" data-toggle="modal" data-target=#constente>
-                                                <i class=" fa fa-plus"></i>
-                                            </button>
-                                        </td>
-                                    </tr>
+                                    {% for ticket in tickets %}
+                                        <tr class="gradeA even" role="row">
+                                            <td class="">{{ ticket.createdAt| date('d/m/y') }}</td>
+                                            <td class="">{{ ticket.montant }}</td>
+                                            <td class="">{{ ticket.typeVisite.libelle }}</td>
+                                            <td class="center">{{ ticket.caissier.user.prenom ~' ' ~ticket.caissier.user.nom }}</td>
+                                            <td class="center sorting_1">{{ ticket.patient.user.prenom ~' ' ~ticket.patient.user.nom  }}</td>
+                                            <td class="center sorting_1">
+                                                <button class=" btn btn-primary" data-toggle="modal"
+                                                        data-target=#constente>
+                                                    <i class=" fa fa-plus"></i>
+                                                </button>
+                                            </td>
+                                        </tr>
+                                    {% endfor %}
                                     </tbody>
                                     <tfoot>
                                     <tr>

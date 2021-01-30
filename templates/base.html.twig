@@ -16,6 +16,7 @@
     <link href="{{ asset('css/style.css') }}" rel="stylesheet">
     <!-- Load Flashy default CSS -->
     <link rel="stylesheet" href="{{ asset('bundles/mercuryseriesflashy/css/flashy.css') }}">
+    <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
     {% block stylesheets %}{% endblock %}
 </head>
 <body class=" pace-done">
@@ -75,11 +76,6 @@
                             <li>
                                 <a href="{{ path('patient_liste') }}">
                                     <i class="fa fa-list"></i>Liste des Patient
-                                </a>
-                            </li>
-                            <li>
-                                <a href="{{ path('patient_new') }}">
-                                    <i class="fa fa-plus"></i>Ajouter Patient
                                 </a>
                             </li>
                         </ul>
@@ -531,6 +527,7 @@
 
 
 <!-- Mainly scripts -->
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 <script src="{{ asset('js/jquery-3.1.1.min.js') }}"></script>
 <script src="{{ asset('js/popper.min.js') }}"></script>
@@ -558,6 +555,14 @@
 <!-- Toastr -->
 <script src="{{ asset('js/plugins/toastr/toastr.min.js') }}"></script>
 <script src="{{ asset('js/moment.js') }}"></script>
+
+<!-- Flashy depends on jQuery -->
+<!-- Load Flashy default JavaScript -->
+<script src="{{ asset('bundles/mercuryseriesflashy/js/flashy.js') }}"></script>
+<!-- Include Flashy default partial -->
+{{ include('@MercurySeriesFlashy/flashy.html.twig') }}
+<script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
+
 {% block  script %} {% endblock %}
 </body>
 </html>

@@ -1,8 +1,6 @@
 
 c
 3src/Security/LoginAuthentificationAuthenticator.php,6/6/667f8e04db6d96b4ac24671a706fb2f11ef5ed60
-Y
-)templates/patient/liste-patient.html.twig,5/1/517dca79ad488e6ec0d555cb8fe23e3ae769b9c1
 G
 src/Entity/Caissier.php,8/8/88b3387a16ac49784e28d5abd4e45217344310a0
 C
@@ -55,3 +53,5 @@ V
 &src/Controller/ConstanteController.php,1/3/13e3f907c0ad3a14091c4e000fa83deb2f64f508
 V
 &src/Repository/InfirmierRepository.php,8/b/8b24f08f52ac9dceb64039cc8df3b5671e931324
+G
+src/Form/TicketType.php,6/7/6744c2eaf49db75db7113e8c97c0f1370748eeb6
