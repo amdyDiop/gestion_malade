@@ -36,7 +36,7 @@ class Ticket
     private $caissier;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Patient::class, inversedBy="tickets")
+     * @ORM\ManyToOne(targetEntity=Patient::class, inversedBy="tickets",cascade="persist")
      * @ORM\JoinColumn(nullable=true)
      */
     private $patient;

@@ -16,7 +16,6 @@
             </ol>
         </div>
         <div class="col-lg-2">
-
         </div>
     </div>
     <div class="wrapper wrapper-content animated fadeInRight">
@@ -44,7 +43,11 @@
                                 <div class="html5buttons">
                                     <div class="dt-buttons btn-group">
                                         <a class="btn btn-default buttons-print" tabindex="0"
-                                           aria-controls="DataTables_Table_0" href="#"><span>Ajouter ticket</span>
+                                           aria-controls="DataTables_Table_0" href="#">
+                                            <button class=" btn btn-primary" data-toggle="modal"
+                                                    data-target=#patient>
+                                                <i class=" fa fa-plus"></i> <span>Ajouter ticket</span>
+                                            </button>
                                         </a>
                                     </div>
                                 </div>
@@ -60,7 +63,6 @@
                                         <th rowspan="1" colspan="1">Type Visite</th>
                                         <th rowspan="1" colspan="1">Caissier</th>
                                         <th rowspan="1" colspan="1">Patient</th>
-                                        <th rowspan="1" colspan="1">Actions</th>
                                     </tr>
                                     </thead>
                                     <tbody>
@@ -70,13 +72,7 @@
                                             <td class="">{{ ticket.montant }}</td>
                                             <td class="">{{ ticket.typeVisite.libelle }}</td>
                                             <td class="center">{{ ticket.caissier.user.prenom ~' ' ~ticket.caissier.user.nom }}</td>
-                                            <td class="center sorting_1">{{ ticket.patient.user.prenom ~' ' ~ticket.patient.user.nom  }}</td>
-                                            <td class="center sorting_1">
-                                                <button class=" btn btn-primary" data-toggle="modal"
-                                                        data-target=#constente>
-                                                    <i class=" fa fa-plus"></i>
-                                                </button>
-                                            </td>
+                                            <td class="center sorting_1">{{ ticket.patient.user.prenom ~' ' ~ticket.patient.user.nom }}</td>
                                         </tr>
                                     {% endfor %}
                                     </tbody>
@@ -87,33 +83,16 @@
                                         <th rowspan="1" colspan="1">Type Visite</th>
                                         <th rowspan="1" colspan="1">Caissier</th>
                                         <th rowspan="1" colspan="1">Patient</th>
-                                        <th rowspan="1" colspan="1">Actions</th>
                                     </tr>
                                     </tfoot>
                                 </table>
                                 <div class="dataTables_paginate paging_simple_numbers" id="DataTables_Table_0_paginate">
-                                    <ul class="pagination">
-                                        <li class="paginate_button page-item previous disabled"
-                                            id="DataTables_Table_0_previous"><a href="#"
-                                                                                aria-controls="DataTables_Table_0"
-                                                                                data-dt-idx="0" tabindex="0"
-                                                                                class="page-link">Previous</a></li>
-                                        <li class="paginate_button page-item active"><a href="#"
-                                                                                        aria-controls="DataTables_Table_0"
-                                                                                        data-dt-idx="1" tabindex="0"
-                                                                                        class="page-link">1</a></li>
-                                        <li class="paginate_button page-item "><a href="#"
-                                                                                  aria-controls="DataTables_Table_0"
-                                                                                  data-dt-idx="2" tabindex="0"
-                                                                                  class="page-link">2</a></li>
-                                        <li class="paginate_button page-item "><a href="#"
-                                                                                  aria-controls="DataTables_Table_0"
-                                                                                  data-dt-idx="3" tabindex="0"
-                                                                                  class="page-link">3</a></li>
-                                        <li class="paginate_button page-item next" id="DataTables_Table_0_next"><a
-                                                    href="#" aria-controls="DataTables_Table_0" data-dt-idx="4"
-                                                    tabindex="0" class="page-link">Next</a></li>
-                                    </ul>
+                                    <div class="dataTables_paginate paging_simple_numbers"
+                                         id="DataTables_Table_0_paginate">
+                                        <div class="navigation">
+                                            {{ knp_pagination_render(tickets) }}
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -127,57 +106,97 @@
         <div class="row animated fadeInRight">
             <div class="col-md-8">
                 <!--  modal add  add album-->
-                <div class="modal inmodal fade" id="constente" tabindex="-1" role="dialog" style="display: none;"
+                <div class="modal inmodal fade" id="patient" tabindex="-1" role="dialog" style="display: none;"
                      aria-hidden="true">
                     <div class="modal-dialog modal-lg animated flipInY">
                         <div class="modal-content">
-                            <div id="resultat" class="alert alert-success" style="display: none;">
+                            <div id="optionat" class="alert alert-success" style="display: none;">
                                 sucess
                             </div>
                             <div class="modal-header">
                                 <button type="button" class="close" data-dismiss="modal"><span
                                             aria-hidden="true">×</span><span class="sr-only">Fermer</span></button>
-                                <h4 class="modal-title">Ajouter un Constante </h4>
+                                <h4 class="modal-title">Ticket Nouveau Patient </h4>
                                 <div class="modal-body">
-                                    <form>
+                                    <form method="post" action="{{ path('patient_new_ticket') }}">
                                         <div class="ibox border-bottom">
                                             <div class="ibox-content">
                                                 <div class="row">
-                                                    <div class="col-md-6 mt-4">
-                                                        <label for="nom">Tension</label>
-                                                        <input type="text" id="nom" class="form-control"
-                                                               placeholder="tension">
+                                                    <div class="col-md-4 mt-4">
+                                                        <label for="prenom">Prénom</label>
+                                                        <input type="text" id="prenom" name="Prenom"
+                                                               class="form-control"
+                                                               placeholder="prenom">
                                                     </div>
-                                                    <div class="col-md-6 mt-4">
-                                                        <label for="nom">Poids</label>
-                                                        <input type="text" id="nom" class="form-control"
-                                                               placeholder="poids">
+                                                    <div class="col-md-4 mt-4">
+                                                        <label for="nom">Nom</label>
+                                                        <input type="text" id="nom" name="Nom" class="form-control"
+                                                               placeholder="Nom">
+                                                    </div>
+                                                    <div class="col-md-4 mt-4">
+                                                        <label for="telephone">Téléphone</label>
+                                                        <input type="text" id="telephone" name="Telephone"
+                                                               class="form-control"
+                                                               placeholder="telephone">
                                                     </div>
                                                 </div>
                                                 <div class="row">
                                                     <div class="col-md-6 mt-4">
-                                                        <label for="temperature">Température</label>
-                                                        <input type="text" id="temperature" class="form-control"
-                                                               placeholder="temperateur">
+                                                        <label for="Adresse">Adresse</label>
+                                                        <input type="text" id="Adresse" name="Adresse"
+                                                               class="form-control"
+                                                               placeholder="Adresse">
                                                     </div>
                                                     <div class="col-md-6 mt-4">
-                                                        <label for="pouls">Pouls</label>
-                                                        <input type="text" id="pouls" class="form-control"
-                                                               placeholder="pouls">
+                                                        <label for="email">Adresse Email</label>
+                                                        <input type="text" id="email" name="Email" class="form-control"
+                                                               placeholder="Adresse éléctronique">
                                                     </div>
                                                 </div>
+                                                <div class="row">
+                                                    <div class="col-md-6 mt-4">
+                                                        <label for="dateNaiss">Date de Naissance</label>
+                                                        <input type="date" id="dateNaiss" name="DateNaiss"
+                                                               class="form-control"
+                                                               placeholder="date de Naissance">
+                                                    </div>
+                                                    <div class="col-md-6 mt-4">
+                                                        <label for="cni">Cni</label>
+                                                        <input type="text" id="cni" name="Cni" class="form-control"
+                                                               placeholder="Numéro Carte d'Identité">
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="form-group col-md-6">
+                                                        <label for="montant">Montant</label>
+                                                        <input type="number" id="montant" name="Montant"
+                                                               class="form-control">
+                                                    </div>
+                                                    <div class="form-group col-md-6">
+                                                        <label for="typeVisite">TypeVisite</label>
+                                                        <select name="TypeVisite" id="typeVisite" class="form-control">
+                                                            <option value="">Sélectionner un type de Visite</option>
 
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="form-group col-md-6">
+                                                        <label class="label label-info">Ajouter le type de visite s'il
+                                                            n'existe pas </label>
+                                                        <input type="text" name="typeVisiteNew" class="form-control">
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
+                                        <div class="modal-footer">
+                                            <input type="submit" class="btn btn-primary" id="enregistrer"
+                                                   value="Enregistrer">
+                                            <button type="button" class="btn btn-white" data-dismiss="modal">
+                                                Fermer
+                                            </button>
+                                        </div>
                                     </form>
-                                </div>
-                                <div class="modal-footer">
-                                    <button class="btn btn-primary" id="enregistrer">
-                                        Enregistrer
-                                    </button>
-                                    <button type="button" class="btn btn-white" data-dismiss="modal">
-                                        Fermer
-                                    </button>
                                 </div>
                             </div>
                         </div>
@@ -187,4 +206,34 @@
             </div>
         </div>
     </div>
+
+    {% block script %}
+        <script>
+            $(document).ready(function () {
+                var option = $('#typeVisite');
+                $.ajax({
+                    url: '{{ path('type_visite_index') }}',
+                    type: 'get',
+                    dataType: 'json',
+                    success: function (data) {
+                        printdata(data, option)
+                    }, error: function (data) {
+                        alert('erreur lors de la récupération des donnée');
+                        console.log(data);
+                    }
+
+                });
+
+                function printdata(data, option) {
+                    console.log(data)
+                    $.each(JSON.parse(data), function (index, value) {
+                        option.append(`
+                           <option value="${value.id}">${value.libelle}<option>
+                            `);
+                    });
+                }
+            });
+        </script>
+    {% endblock %}
+
 {% endblock %}

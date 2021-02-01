@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}TypeVisite index{% endblock %}
+
+{% block body %}
+    <h1>TypeVisite index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Libelle</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for type_visite in type_visites %}
+            <tr>
+                <td>{{ type_visite.id }}</td>
+                <td>{{ type_visite.libelle }}</td>
+                <td>
+                    <a href="{{ path('type_visite_show', {'id': type_visite.id}) }}">show</a>
+                    <a href="{{ path('type_visite_edit', {'id': type_visite.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('type_visite_new') }}">Create new</a>
+{% endblock %}

@@ -5,9 +5,15 @@ namespace App\Controller;
 use App\Entity\Patient;
 use App\Entity\Ticket;
 use App\Entity\TypeVisite;
+use App\Entity\User;
 use App\Form\TicketType;
+use App\Form\UserType;
 use App\Repository\CaissierRepository;
+use App\Repository\ProfilRepository;
 use App\Repository\TicketRepository;
+use App\Repository\TypeVisiteRepository;
+use Doctrine\ORM\EntityManagerInterface;
+use Knp\Component\Pager\PaginatorInterface;
 use MercurySeries\FlashyBundle\FlashyNotifier;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -22,28 +28,92 @@ class TicketController extends AbstractController
 {
     private $ticketRep;
     private $caissierRep;
+    private $notifier;
 
-    function __construct( CaissierRepository  $caissierRep,TicketRepository $ticketRep)
+    function __construct(FlashyNotifier  $notifier,CaissierRepository $caissierRep, TicketRepository $ticketRep)
     {
         $this->ticketRep = $ticketRep;
         $this->caissierRep = $caissierRep;
-
+        $this->notifier = $notifier;
     }
 
     /**
      * @Route("/", name="ticket_index", methods={"GET"})
      */
-    public function index(): Response
+    public function index(Request  $request,PaginatorInterface $paginator): Response
     {
+        $tickets = $paginator->paginate(
+            $this->ticketRep->findByToDay(), /* query NOT result */
+            $request->query->getInt('page', 1), /*page number*/
+            4 /*limit per page*/
+        );
         return $this->render('ticket/index.html.twig', [
-            'tickets' => $this->ticketRep->findAll(),
+            'tickets' => $tickets,
         ]);
     }
+
+
+    /**
+     * @Route("/patient/new", name="patient_new_ticket", methods={"POST"})
+     */
+    public function newTicketPatient(EntityManagerInterface $manager, Request $request, CaissierRepository $caissierRepository, ProfilRepository $profilRepository, TypeVisiteRepository $visiteRepository): Response
+    {
+        $ticket = new Ticket();
+        $patient = new Patient();
+        $user = new User();
+        $data = $request->request->all();
+        foreach ($data as $key => $value) {
+            if ($value != ''){
+                if ($key != "Montant" && $key != "TypeVisite" && $key != "typeVisiteNew") {
+                    $set = "set" . $key;
+                    if ($key == "DateNaiss") {
+                        $dateNaiss = new \DateTime($value);
+                        $user->$set($dateNaiss);
+                    } else {
+                        $user->$set($value);
+                    }
+                }
+                else {
+                    if ($key == 'TypeVisite' && $value != "") {
+                        $tVisite = $visiteRepository->find(1);
+                        $ticket->setTypeVisite($tVisite);
+                    } else if ($key == 'typeVisiteNew' && $value != "") {
+                        $typevisite = new TypeVisite();
+                        $typevisite->setLibelle($value);
+                        $ticket->setTypeVisite($typevisite);
+                    } else if ($key == 'Montant') {
+                        $set = "set" . ucfirst($key);
+                        $ticket->$set($value);
+                    }
+                }
+            }
+            else{
+                $this->notifier->error($key.' est obligatoire  etre null');
+                return $this->render('ticket/index.html.twig', [
+                    'tickets' => $this->ticketRep->findAll(),
+                ]);
+            }
+        }
+        $profil = $profilRepository->findBy(['libelle' => "ROLE_PATIENT"]);
+        $caissier = $caissierRepository->findByUserEmail($this->getUser()->getUsername());
+        $user->setProfil($profil[0]);
+        $patient->setUser($user);
+        $ticket->setPatient($patient);
+        $ticket->setCaissier($caissier[0]);
+        $manager->persist($ticket);
+        $manager->flush();
+        $this->notifier->message('le ticket a été crée');
+        return $this->render('ticket/index.html.twig', [
+            'tickets' => $this->ticketRep->findAll(),
+
+        ]);
+    }
+
 
     /**
      * @Route("/patient/{id}", name="ticket_patient", methods={"GET","POST"})
      */
-    public function ExistedPatient(ValidatorInterface  $validator,Patient $patient, Request $request,  FlashyNotifier $flashy): Response
+    public function ExistedPatient(ValidatorInterface $validator, Patient $patient, Request $request, FlashyNotifier $flashy): Response
     {
         $ticket = new Ticket();
 
@@ -59,7 +129,7 @@ class TicketController extends AbstractController
                     'form' => $form->createView(),
                 ]);
             }
-            if ($newTypeVisite){
+            if ($newTypeVisite) {
                 $typeVisite = new  TypeVisite();
                 $typeVisite->setLibelle($newTypeVisite);
                 $ticket->setTypeVisite($typeVisite);

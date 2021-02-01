@@ -7,6 +7,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ORM\Entity(repositoryClass=TypeVisiteRepository::class)
@@ -18,11 +19,13 @@ class TypeVisite
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
+     * @Groups ({"visite"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups ({"visite"})
      */
     private $libelle;
 
