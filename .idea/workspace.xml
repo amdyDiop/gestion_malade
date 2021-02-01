@@ -20,20 +20,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4756cee9-6cc9-452e-9522-494fc0f82d3a" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/Controller/TypeVisiteController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Form/TypeVisiteType.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/type_visite/_delete_form.html.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/type_visite/_form.html.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/type_visite/edit.html.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/type_visite/index.html.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/type_visite/new.html.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/type_visite/show.html.twig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/img/User_Circle.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/img/images.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/img/user.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/docteur/home.docteur.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/DocteurController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/DocteurController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/TicketController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/TicketController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Ticket.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Ticket.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/TypeVisite.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/TypeVisite.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Repository/TicketRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/TicketRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/base.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/User.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/infirmier/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/infirmier/index.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/ticket/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/ticket/index.html.twig" afterDir="false" />
     </list>
@@ -178,17 +172,17 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/config/packages" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/public/img" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/public/img" />
+      <recent name="$PROJECT_DIR$/templates/docteur" />
       <recent name="$PROJECT_DIR$/config/packages" />
       <recent name="$PROJECT_DIR$/src/Repository" />
       <recent name="$PROJECT_DIR$/src/Entity" />
-      <recent name="$PROJECT_DIR$/public/img" />
-      <recent name="$PROJECT_DIR$/src/Security" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/Services" />
@@ -223,7 +217,8 @@
       <workItem from="1611677760080" duration="3627000" />
       <workItem from="1611696819806" duration="539000" />
       <workItem from="1611943509692" duration="4839000" />
-      <workItem from="1612010504511" duration="18200000" />
+      <workItem from="1612010504511" duration="24718000" />
+      <workItem from="1612181150142" duration="5072000" />
     </task>
     <servers />
   </component>

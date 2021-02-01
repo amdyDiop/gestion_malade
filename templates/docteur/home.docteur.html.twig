@@ -1,0 +1,110 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Docteur {{ app.user.prenom ~' '~ app.user.nom }}{% endblock %}
+
+{% block body %}
+    <div class="row wrapper border-bottom white-bg page-heading">
+        <div class="col-lg-9">
+            <h2>Accueil Docteur</h2>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item">
+                    <strong>Acceuil</strong>
+                </li>
+            </ol>
+            <input type="text" class="form-control col-3" placeholder="rechercher un patient " name="search"
+                   id="search">
+        </div>
+    </div>
+    <div class="wrapper wrapper-content animated fadeInRight">
+        <div class="row" id="result">
+            {% for patient in patients %}
+                <div class="col-lg-4">
+                    <div class="contact-box center-version">
+                        <button  class=" btn btn-lg btn-bitbucket btn-primary pull-right"> <a href="vis"><i class="fa fa-user-md"></i></a></button>
+                        <a>
+                            <img alt="image" class="rounded-circle" src="{{ asset('img/User_Circle.png') }}">
+                            <h3 class="m-b-xs"><strong>{{ patient.user.prenom ~' ' ~patient.user.nom }}</strong>
+                            </h3>
+                            <address class="m-t-md">
+                                <strong>Adresse</strong><br>
+                                {{ patient.user.adresse }}<br>
+                            </address>
+                        </a>
+                        <div class="contact-box-footer">
+                            <div class="m-t-xs btn-group">
+                                <a href="" class="btn btn-xs btn-white"><i
+                                            class="fa fa-phone"></i> {{ patient.user.telephone }} </a>
+                                <a href="" class="btn btn-xs btn-white"><i class="fa fa-envelope"></i>
+                                    {{ patient.user.email }}</a>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+        <div class="dataTables_paginate paging_simple_numbers" id="DataTables_Table_0_paginate">
+            <div class="navigation">
+                {{ knp_pagination_render(patients) }}
+            </div>
+        </div>
+    </div>
+
+    {% block script %}
+        <script>
+            $(document).ready(function () {
+                var search = $('#search');
+                var result = $('#result ');
+                search.on('keyup', (function () {
+                    var value = search.val()
+                    $.ajax({
+                        url: '{{ path('patient_search') }}',
+                        type: 'post',
+                        data: {search: value},
+                        dataType: 'json',
+                        success: function (data) {
+                            result.html('')
+                            printdata(data, result)
+                        }, error: function (data) {
+                            alert('erreur lors de la récupération des donnée');
+                            console.log(data);
+                        }
+
+                    });
+
+                    function printdata(data, result) {
+
+                        $.each(JSON.parse(data), function (index, patient) {
+                            console.log(patient)
+                            result.append(`
+                <div class="col-lg-4">
+                    <div class="contact-box center-version">
+                            <a>
+                                <img alt="image" class="rounded-circle" src="{{ asset('img/User_Circle.png') }}">
+                                <h3 class="m-b-xs"><strong>${patient.prenom } ${ patient.nom}</strong>
+                                </h3>
+                                <address class="m-t-md">
+                                    <strong>Adresse</strong><br>
+                                    ${patient.adresse}<br>
+                                </address>
+                            </a>
+                        <div class="contact-box-footer">
+                            <div class="m-t-xs btn-group">
+                                <a href="" class="btn btn-xs btn-white"><i
+                                            class="fa fa-phone"></i> ${patient.telephone}</a>
+                                <a href="" class="btn btn-xs btn-white"><i class="fa fa-envelope"></i>
+                                    ${patient.email}</a>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                            `);
+                        });
+                    }
+                }));
+            });
+        </script>
+    {% endblock %}
+
+{% endblock %}

@@ -5,6 +5,8 @@ namespace App\Controller;
 use App\Entity\Docteur;
 use App\Form\DocteurType;
 use App\Repository\DocteurRepository;
+use App\Repository\PatientRepository;
+use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -15,13 +17,26 @@ use Symfony\Component\Routing\Annotation\Route;
  */
 class DocteurController extends AbstractController
 {
+    private $patientRep;
+    private $doctorRep;
+    public function __construct(DocteurRepository  $doctorRep,PatientRepository  $patienRep)
+    {
+        $this->patientRep= $patienRep;
+        $this->doctorRep= $doctorRep;
+    }
+
     /**
      * @Route("/", name="docteur_index", methods={"GET"})
      */
-    public function index(DocteurRepository $docteurRepository): Response
+    public function index(Request  $request,DocteurRepository $docteurRepository,PaginatorInterface  $paginator): Response
     {
-        return $this->render('docteur/index.html.twig', [
-            'docteurs' => $docteurRepository->findAll(),
+        $patient = $paginator->paginate(
+            $this->patientRep->findAll(), /* query NOT result */
+            $request->query->getInt('page', 1), /*page number*/
+            6 /*limit per page*/
+        );
+        return $this->render('docteur/home.docteur.html.twig', [
+            'patients' => $patient,
         ]);
     }
 
@@ -33,7 +48,6 @@ class DocteurController extends AbstractController
         $docteur = new Docteur();
         $form = $this->createForm(DocteurType::class, $docteur);
         $form->handleRequest($request);
-
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($docteur);

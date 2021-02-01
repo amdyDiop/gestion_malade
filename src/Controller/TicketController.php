@@ -30,7 +30,7 @@ class TicketController extends AbstractController
     private $caissierRep;
     private $notifier;
 
-    function __construct(FlashyNotifier  $notifier,CaissierRepository $caissierRep, TicketRepository $ticketRep)
+    function __construct(FlashyNotifier $notifier, CaissierRepository $caissierRep, TicketRepository $ticketRep)
     {
         $this->ticketRep = $ticketRep;
         $this->caissierRep = $caissierRep;
@@ -40,7 +40,7 @@ class TicketController extends AbstractController
     /**
      * @Route("/", name="ticket_index", methods={"GET"})
      */
-    public function index(Request  $request,PaginatorInterface $paginator): Response
+    public function index(Request $request, PaginatorInterface $paginator): Response
     {
         $tickets = $paginator->paginate(
             $this->ticketRep->findByToDay(), /* query NOT result */
@@ -56,14 +56,15 @@ class TicketController extends AbstractController
     /**
      * @Route("/patient/new", name="patient_new_ticket", methods={"POST"})
      */
-    public function newTicketPatient(EntityManagerInterface $manager, Request $request, CaissierRepository $caissierRepository, ProfilRepository $profilRepository, TypeVisiteRepository $visiteRepository): Response
+    public function newTicketPatient(PaginatorInterface $paginator, EntityManagerInterface $manager, Request $request, CaissierRepository $caissierRepository, ProfilRepository $profilRepository, TypeVisiteRepository $visiteRepository): Response
     {
         $ticket = new Ticket();
         $patient = new Patient();
         $user = new User();
+
         $data = $request->request->all();
         foreach ($data as $key => $value) {
-            if ($value != ''){
+            if ($value != '') {
                 if ($key != "Montant" && $key != "TypeVisite" && $key != "typeVisiteNew") {
                     $set = "set" . $key;
                     if ($key == "DateNaiss") {
@@ -75,7 +76,7 @@ class TicketController extends AbstractController
                 }
                 else {
                     if ($key == 'TypeVisite' && $value != "") {
-                        $tVisite = $visiteRepository->find(1);
+                        $tVisite = $visiteRepository->find($value);
                         $ticket->setTypeVisite($tVisite);
                     } else if ($key == 'typeVisiteNew' && $value != "") {
                         $typevisite = new TypeVisite();
@@ -86,11 +87,15 @@ class TicketController extends AbstractController
                         $ticket->$set($value);
                     }
                 }
-            }
-            else{
-                $this->notifier->error($key.' est obligatoire  etre null');
+            } elseif($key != 'typeVisiteNew' && $key != 'TypeVisite') {
+                $this->notifier->error($key . ' est obligatoire ');
+                $tickets = $paginator->paginate(
+                    $this->ticketRep->findByToDay(), /* query NOT result */
+                    $request->query->getInt('page', 1), /*page number*/
+                    4 /*limit per page*/
+                );
                 return $this->render('ticket/index.html.twig', [
-                    'tickets' => $this->ticketRep->findAll(),
+                    'tickets' => $tickets,
                 ]);
             }
         }
@@ -103,8 +108,13 @@ class TicketController extends AbstractController
         $manager->persist($ticket);
         $manager->flush();
         $this->notifier->message('le ticket a été crée');
+        $pagination = $paginator->paginate(
+            $this->ticketRep->findByToDay(), /* query NOT result */
+            $request->query->getInt('page', 1), /*page number*/
+            5 /*limit per page*/
+        );
         return $this->render('ticket/index.html.twig', [
-            'tickets' => $this->ticketRep->findAll(),
+            'tickets' => $pagination,
 
         ]);
     }
