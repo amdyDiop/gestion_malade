@@ -20,7 +20,7 @@ class Visite
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="datetime")
      */
     private $dateVisite;
 
@@ -45,14 +45,15 @@ class Visite
      */
     private $note;
 
-
-
     /**
      * @ORM\OneToOne(targetEntity=Ordenance::class, cascade={"persist", "remove"})
      */
     private $ordenance;
 
-
+    public function __construct()
+    {
+        $this->dateVisite = new \DateTime();
+    }
 
     public function getId(): ?int
     {

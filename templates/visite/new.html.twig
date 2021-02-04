@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Visite{% endblock %}
+
+{% block body %}
+    <h1>Create new Visite</h1>
+
+    {{ include('visite/_form.html.twig') }}
+
+    <a href="{{ path('visite_index') }}">back to list</a>
+    {% block script %}
+        <script>
+            $(document).ready(function () {
+                var option = $('#medicament');
+                $.ajax({
+                    url: '{{ path('medicament_index') }}',
+                    type: 'get',
+                    dataType: 'json',
+                    success: function (data) {
+                        console.log(data)
+                        printdata(data, option)
+                    }, error: function (data) {
+                        alert('erreur lors de la récupération des donnée');
+                        console.log(data);
+                    }
+
+                });
+
+                function printdata(data, option) {
+                    console.log(data)
+                    $.each(JSON.parse(data), function (index, value) {
+                        option.append(`
+                           <option value="${value.id}">${value.libelle}<option>
+                            `);
+                    });
+                }
+            });
+        </script>
+    {% endblock %}
+{% endblock %}

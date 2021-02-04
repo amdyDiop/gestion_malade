@@ -20,7 +20,9 @@
             {% for patient in patients %}
                 <div class="col-lg-4">
                     <div class="contact-box center-version">
-                        <button  class=" btn btn-lg btn-bitbucket btn-primary pull-right"> <a href="vis"><i class="fa fa-user-md"></i></a></button>
+                        <a  href="{{ path('visite_new',{id:patient.id}) }}" >
+                            <button class=" btn btn-lg btn-bitbucket btn-primary pull-right" ><i class="fa fa-user-md"></i></button>
+                        </a>
                         <a>
                             <img alt="image" class="rounded-circle" src="{{ asset('img/User_Circle.png') }}">
                             <h3 class="m-b-xs"><strong>{{ patient.user.prenom ~' ' ~patient.user.nom }}</strong>
@@ -81,7 +83,7 @@
                     <div class="contact-box center-version">
                             <a>
                                 <img alt="image" class="rounded-circle" src="{{ asset('img/User_Circle.png') }}">
-                                <h3 class="m-b-xs"><strong>${patient.prenom } ${ patient.nom}</strong>
+                                <h3 class="m-b-xs"><strong>${patient.prenom} ${patient.nom}</strong>
                                 </h3>
                                 <address class="m-t-md">
                                     <strong>Adresse</strong><br>

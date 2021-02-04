@@ -19,32 +19,15 @@ class DocteurRepository extends ServiceEntityRepository
         parent::__construct($registry, Docteur::class);
     }
 
-    // /**
-    //  * @return Docteur[] Returns an array of Docteur objects
-    //  */
-    /*
-    public function findByExampleField($value)
+    public function findByEmail($email)
     {
-        return $this->createQueryBuilder('d')
-            ->andWhere('d.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('d.id', 'ASC')
-            ->setMaxResults(10)
-            ->getQuery()
-            ->getResult()
-        ;
+        $entityManager = $this->getEntityManager();
+        $query = $entityManager->createQuery(
+            'SELECT d
+        FROM App\Entity\Docteur d
+        JOIN d.user u
+        WHERE u.email =:email'
+        )->setParameter('email', $email);
+        return $query->getResult();
     }
-    */
-
-    /*
-    public function findOneBySomeField($value): ?Docteur
-    {
-        return $this->createQueryBuilder('d')
-            ->andWhere('d.exampleField = :val')
-            ->setParameter('val', $value)
-            ->getQuery()
-            ->getOneOrNullResult()
-        ;
-    }
-    */
 }

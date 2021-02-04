@@ -36,7 +36,6 @@
                         </div>
                     </div>
                     <div class="ibox-content">
-
                         <div class="table-responsive">
                             <div id="DataTables_Table_0_wrapper"
                                  class="dataTables_wrapper container-fluid dt-bootstrap4">
@@ -96,7 +95,6 @@
                                 </div>
                             </div>
                         </div>
-
                     </div>
                 </div>
             </div>
@@ -225,11 +223,8 @@
                 });
 
                 function printdata(data, option) {
-                    console.log(data)
                     $.each(JSON.parse(data), function (index, value) {
-                        option.append(`
-                           <option value="${value.id}">${value.libelle}<option>
-                            `);
+                        option.append(`<option value="${value.id}">${value.libelle}<option>`);
                     });
                 }
             });
