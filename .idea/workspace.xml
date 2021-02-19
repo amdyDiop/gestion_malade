@@ -20,10 +20,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4756cee9-6cc9-452e-9522-494fc0f82d3a" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/config/gestion_des_malades.sql" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Constante.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Constante.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Form/ConstanteType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/ConstanteType.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/base.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -224,7 +222,7 @@
       <workItem from="1612700560490" duration="2977000" />
       <workItem from="1612888014573" duration="2562000" />
       <workItem from="1613679092830" duration="10196000" />
-      <workItem from="1613727332527" duration="17112000" />
+      <workItem from="1613727332527" duration="18475000" />
     </task>
     <servers />
   </component>
