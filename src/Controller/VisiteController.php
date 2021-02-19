@@ -11,6 +11,7 @@ use App\Repository\DocteurRepository;
 use App\Repository\MedicamentRepository;
 use App\Repository\PatientRepository;
 use App\Repository\VisiteRepository;
+use Dompdf\Dompdf;
 use MercurySeries\FlashyBundle\FlashyNotifier;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -19,7 +20,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
 
 /**
- * @Route("/docteur/visite")
+ * @Route("/docteur/visites")
  */
 class VisiteController extends AbstractController
 {
@@ -35,9 +36,9 @@ class VisiteController extends AbstractController
     }
 
     /**
-     * @Route("/", name="visite_index", methods={"GET"})
+     * @Route("/", name="liste_visite", methods={"GET"})
      */
-    public function index(VisiteRepository $visiteRepository): Response
+    public function liste(VisiteRepository $visiteRepository): Response
     {
         return $this->render('visite/index.html.twig', [
             'visites' => $visiteRepository->findAll(),
@@ -73,18 +74,17 @@ class VisiteController extends AbstractController
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($visite);
             $entityManager->flush();
-            $notifier->success('le patient a été visité ');
             return $this->redirectToRoute('docteur_index');
         }
-
         return $this->render('visite/new.html.twig', [
             'visite' => $visite,
+            'patient' => $patient,
             'form' => $form->createView(),
         ]);
     }
 
     /**
-     * @Route("/{id}", name="visite_show", methods={"GET"})
+     * @Route("/{id}/sow", name="visite_show", methods={"GET"},requirements={"id"="\d+"})
      */
     public function show(Visite $visite): Response
     {

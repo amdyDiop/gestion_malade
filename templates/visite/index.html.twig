@@ -3,37 +3,90 @@
 {% block title %}Visite index{% endblock %}
 
 {% block body %}
-    <h1>Visite index</h1>
-
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>DateVisite</th>
-                <th>Rv</th>
-                <th>Note</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for visite in visites %}
-            <tr>
-                <td>{{ visite.id }}</td>
-                <td>{{ visite.dateVisite }}</td>
-                <td>{{ visite.rv ? visite.rv|date('Y-m-d H:i:s') : '' }}</td>
-                <td>{{ visite.note }}</td>
-                <td>
-                    <a href="{{ path('visite_show', {'id': visite.id}) }}">show</a>
-                    <a href="{{ path('visite_edit', {'id': visite.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="5">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
-
-    <a href="{{ path('visite_new') }}">Create new</a>
+    <div class="wrapper wrapper-content">
+        <div class="wrapper wrapper-content animated fadeInRight">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="ibox ">
+                        <div class="ibox-content">
+                            <div class="table-responsive">
+                                <div id="DataTables_Table_0_wrapper"
+                                     class="dataTables_wrapper container-fluid dt-bootstrap4">
+                                    <div class="html5buttons">
+                                        <div class="dt-buttons btn-group">
+                                            <a class="btn btn-default buttons-pdf buttons-html5" tabindex="0"
+                                               aria-controls="DataTables_Table_0" href="#"><span>PDF</span>
+                                            </a>
+                                            <a class="btn btn-default buttons-print" tabindex="0"
+                                               aria-controls="DataTables_Table_0" href="#"><span>Imprimer</span>
+                                            </a>
+                                            <a class="btn btn-default buttons-print" tabindex="0"
+                                               aria-controls="DataTables_Table_0"
+                                               href="{{ path('infirmier_patient_new') }}"><span>Ajouter Patient</span>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div id="DataTables_Table_0_filter" class="dataTables_filter">
+                                        <label>Recherche:<input type="search" id="search"
+                                                                class="form-control form-control-sm">
+                                        </label>
+                                    </div>
+                                    <table class=" text-center table table-striped table-bordered table-hover dataTables-example dataTable"
+                                           id="DataTables_Table_0" aria-describedby="DataTables_Table_0_info"
+                                           role="grid">
+                                        <thead>
+                                        <tr role="row">
+                                            <th rowspan="1" colspan="1">Date Visite </th>
+                                            <th rowspan="1" colspan="1">Rendez-Vous</th>
+                                            <th rowspan="1" colspan="1">Note</th>
+                                            <th rowspan="1" colspan="1">Medecin</th>
+                                            <th rowspan="1" colspan="1">Patient</th>
+                                            <th rowspan="1" colspan="1">Actions</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody id="result">
+                                        {% for visite in visites %}
+                                            <tr class="gradeA even" role="row">
+                                                <td>{{ visite.dateVisite |date('Y-m-d H:i:s') }}</td>
+                                                <td>{{ visite.rv ? visite.rv|date('Y-m-d H:i:s') : '' }}</td>
+                                                <td>{{ visite.note }}</td>
+                                                <td>{{ visite.docteur.user.prenom ~ ' ' ~ visite.docteur.user.nom}}</td>
+                                                <td>{{ visite.patient.user.prenom~ ' '~ visite.patient.user.nom}}</td>
+                                                <td class="center sorting_1">
+                                                    <a href="{{ path('ordenace_pdf',{id: visite.id}) }}">
+                                                        <button class=" btn btn-bitbucket btn-primary"><i
+                                                                    class="fa fa-print "></i></button>
+                                                    </a>
+                                                    <a href="{{ path('pdf',{id: visite.patient.id,idV: visite.id}) }}">
+                                                        <button class=" btn btn-bitbucket btn-primary"><i
+                                                                    class="fa fa-certificate "></i></button>
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                        {% endfor %}
+                                        </tbody>
+                                        <tfoot>
+                                        <tr role="row">
+                                            <th rowspan="1" colspan="1">Date Visite </th>
+                                            <th rowspan="1" colspan="1">Rendez-Vous</th>
+                                            <th rowspan="1" colspan="1">Note</th>
+                                            <th rowspan="1" colspan="1">Medecin</th>
+                                            <th rowspan="1" colspan="1">Patient</th>
+                                            <th rowspan="1" colspan="1">Actions</th>
+                                        </tr>
+                                        </tfoot>
+                                    </table>
+                                    <div class="dataTables_paginate paging_simple_numbers"
+                                         id="DataTables_Table_0_paginate">
+                                        <div class="navigation">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 {% endblock %}

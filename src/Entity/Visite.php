@@ -60,7 +60,7 @@ class Visite
         return $this->id;
     }
 
-    public function getDateVisite(): ?string
+    public function getDateVisite()
     {
         return $this->dateVisite;
     }

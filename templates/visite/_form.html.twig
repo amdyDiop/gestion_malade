@@ -1,6 +1,96 @@
 <div class="card">
+    <div class="card-header">
+        <div class="row wrapper border-bottom white-bg page-heading">
+            <div class="col-lg-9">
+                <h1>Visite pour {{ patient.user.prenom ~' '~ patient.user.nom }}</h1>
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item">
+                        <a href="{{ path('docteur_index') }}"></a><strong>Acceuil</strong>
+                    </li>
+                    <li class="breadcrumb-item">
+                        <strong>Salle de Visite</strong>
+                    </li>
+                </ol>
+            </div>
+        </div>
+    </div>
     <div class="card-body">
         {{ form_start(form) }}
+        <div class="row">
+            <div class="col">
+                <div class="ibox">
+                    <div class="ibox-title">
+                        <h5>Informations {{ patient.user.prenom ~' '~ patient.user.nom }}</h5>
+                    </div>
+                    <div class="ibox-tools">
+                        <a class="collapse-link">
+                            <i class="fa fa-chevron-up"></i>
+                        </a>
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                            <i class="fa fa-wrench"></i>
+                        </a>
+                    </div>
+                    <div class="ibox-content">
+                        <div class="row justify-content-center">
+
+                            {% if patient.constances.values[0].tenssion !=null %}
+                                <div class="col-lg-2">
+                                    <div class="widget navy-bg p-lg text-center">
+                                        <div class="m-b-md">
+                                            <i class="fa fa-shield fa-4x"></i>
+                                            <h1 class="m-xs"> {{ patient.constances.values[0].tenssion }}</h1>
+                                            <h3 class="font-bold no-margins">
+                                                Tension
+                                            </h3>
+                                        </div>
+                                    </div>
+                                </div>
+                            {% endif %}
+                            {% if patient.constances.values[0].tenssion !=null %}
+                                <div class="col-lg-2">
+                                    <div class="widget navy-bg p-lg text-center">
+                                        <div class="m-b-md">
+                                            <i class="fa fa-shield fa-4x"></i>
+                                            <h1 class="m-xs"> {{ patient.constances.values[0].pression }}</h1>
+                                            <h3 class="font-bold no-margins">
+                                                Préssion
+                                            </h3>
+                                        </div>
+                                    </div>
+                                </div>
+                            {% endif %}
+                            {% if patient.constances.values[0].tenssion !=null %}
+                                <div class="col-lg-2">
+                                    <div class="widget navy-bg p-lg text-center">
+                                        <div class="m-b-md">
+                                            <i class="fa fa-shield fa-4x"></i>
+                                            <h1 class="m-xs"> {{ patient.constances.values[0].pouls }}</h1>
+                                            <h3 class="font-bold no-margins">
+                                                Pouls
+                                            </h3>
+                                        </div>
+                                    </div>
+                                </div>
+                            {% endif %}
+                            {% if patient.constances.values[0].tenssion !=null %}
+                                <div class="col-lg-2">
+                                    <div class="widget navy-bg p-lg text-center">
+                                        <div class="m-b-md">
+                                            <i class="fa fa-shield fa-4x"></i>
+                                            <h1 class="m-xs"> {{ patient.constances.values[0].temperature }}</h1>
+                                            <h3 class="font-bold no-margins">
+                                                Tempéra
+                                            </h3>
+                                        </div>
+                                    </div>
+                                </div>
+                            {% endif %}
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
         <div class="row">
             <div class="col">
                 <div class="ibox">

@@ -55,3 +55,33 @@ V
 &src/Repository/InfirmierRepository.php,8/b/8b24f08f52ac9dceb64039cc8df3b5671e931324
 G
 src/Form/TicketType.php,6/7/6744c2eaf49db75db7113e8c97c0f1370748eeb6
+N
+templates/ticket/new.html.twig,3/5/350201a8cc0c13ff91296c9c39e04f598026a3c1
+W
+'src/Controller/MedicamentController.php,4/c/4c05577e23e31bf0fa0409b6bd06e259e6200704
+P
+ templates/ticket/_form.html.twig,c/b/cb869fc41fa0f611153b3b71b4cec24f31ba1d2e
+G
+src/Form/VisiteType.php,0/3/03832bafd304fb3ebd0ecb7a5f3c8491e5004c52
+E
+src/Entity/Visite.php,9/4/9498fe36aae50b5beb443c530c906c2f50b37a70
+H
+src/Entity/Ordenance.php,b/5/b52a4063c9d237cfd687b7742621eef5b89bff69
+T
+$src/Repository/DocteurRepository.php,1/b/1badcab9d070312aa388ea9b1920f403a6330177
+F
+src/Entity/Docteur.php,8/7/87b2955f6cff30dba05bea68e46371c71b36e48b
+P
+ templates/visite/index.html.twig,1/b/1bd11783cdb91b7ff93a925604fdc6bfcf7d08b2
+X
+(templates/docteur/home.docteur.html.twig,0/7/072ac0eeae928ea8229a52c19cfe99c386340453
+N
+templates/visite/new.html.twig,1/b/1bc39de7429a84cbb24f0fc0537775517fc564d7
+P
+ templates/visite/_form.html.twig,e/8/e80fc23b6e97fe5108169ce60ed5c6f50e8755ac
+S
+#src/Controller/VisiteController.php,a/a/aafc905e16df34344c3e0477a2b875b54decbb0f
+V
+&src/Repository/ConstanceRepository.php,a/3/a34b434e1734f30c3524005c19e88351e3337094
+R
+"templates/security/login.html.twig,8/9/89d5f9595fc54c90b0c2626c3e5e07e23a679864

@@ -1,0 +1,22 @@
+{% extends 'basepdf.html.twig' %}
+
+{% block body %}
+    <div style="margin-left: 12%">
+        <img src="{{ asset('img/logoSante.jpg') }}" alt="logo santé">
+        <p>République du Sénégal  <span style="float: right">Date: {{ now|date('d,m,Y') }}</span></p>
+        <p> Ministère de la santé</p>
+        <p> Et de l’action sociale</p>
+        <p> Centre hospitalier régional</p>
+        <p> Amadou Sakhir Mbaye de Louga</p>
+        <p> Tel : 33 967 09 29</p>
+        <p> Email : chrasmlouga@gmail.com</p>
+        <div style="margin-left: 40%"><h3>Certificat médical</h3></div>
+
+        <p> Fait le : {{ "now"|date("d/m/Y") }} <span style="float:right ;margin-left: 5%">Médecin</span></p>
+    </div>
+{% endblock %}
+
+{% block title %}
+
+{% endblock %}
+

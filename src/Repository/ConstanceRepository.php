@@ -35,22 +35,23 @@ class ConstanceRepository extends ServiceEntityRepository
         return $qb->getQuery()->execute();
     }
 
-    // /**
-    //  * @return Constante[] Returns an array of Constante objects
-    //  */
-    /*
-    public function findByExampleField($value)
+     /**
+      * @return Constante[] Returns an array of Constante objects
+      */
+
+    public function findLast($email)
     {
         return $this->createQueryBuilder('c')
-            ->andWhere('c.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('c.id', 'ASC')
-            ->setMaxResults(10)
+            ->join('c. ','u')
+            ->andWhere('u = :val')
+            ->setParameter('val', $email)
+            ->orderBy('c.id', 'DESC')
+            ->setMaxResults(1)
             ->getQuery()
             ->getResult()
         ;
     }
-    */
+
 
     /*
     public function findOneBySomeField($value): ?Constante

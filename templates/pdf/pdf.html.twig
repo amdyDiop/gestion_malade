@@ -1,0 +1,27 @@
+{% extends 'basepdf.html.twig' %}
+
+{% block body %}
+    <div style="margin-left: 12%">
+    <p>République du Sénégal</p>
+    <p> Ministère de la santé</p>
+    <p> Et de l’action sociale</p>
+    <p> Centre hospitalier régional</p>
+    <p> Amadou Sakhir Mbaye de Louga</p>
+    <p> Tel : 33 967 09 29</p>
+    <p> Email : chrasmlouga@gmail.com</p>
+    <div style="margin-left: 38%"><h2>Ordenance</h2></div>
+    <p>Je souligne Dr {{ medecin.prenom ~ " "~medecin.nom  }} certifie avoir reçu le nommé {{ patient.user.prenom ~ " " ~ patient.user.nom}} Né</p>
+    <p>le {{patient.user.dateNaiss| date('d-m-Y ') }} à {{ patient.user.adresse }}</p>
+    <p>A l’examen on note</p>
+     {{ note ~' '}}  et son état
+    <p>de santé nécessite un ITT incapacité temporaire de travail de 7 jours sauf</p>
+    complication ultérieur.
+   <p></p> L’intéressé reprendra service et valoir ce que de droit
+    <p> Fait le : {{ "now"|date("d/m/Y") }} <span style="float:right ;margin-left: 5%">Médecin</span></p>
+    </div>
+{% endblock %}
+
+{% block title %}
+
+{% endblock %}
+

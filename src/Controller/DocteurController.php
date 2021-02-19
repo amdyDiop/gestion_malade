@@ -11,10 +11,10 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-
 /**
  * @Route("/docteur")
  */
+
 class DocteurController extends AbstractController
 {
     private $patientRep;
@@ -62,11 +62,13 @@ class DocteurController extends AbstractController
         ]);
     }
 
+
     /**
-     * @Route("/{id}", name="docteur_show", methods={"GET"})
+     * @Route("/{id}", name="docteur_show", methods={"GET"},requirements={"id"="\d+"})
      */
     public function show(Docteur $docteur): Response
     {
+        dd('jh');
         return $this->render('docteur/show.html.twig', [
             'docteur' => $docteur,
         ]);
