@@ -34,25 +34,25 @@ class Constante
     private $patient;
 
     /**
-     * @ORM\Column(type="string", length=10)
+     * @ORM\Column(type="float",nullable=true)
      * @Groups ({"constante"})
      */
     private $tenssion;
 
     /**
-     * @ORM\Column(type="string", length=15)
+     * @ORM\Column(type="float",nullable=true)
      * @Groups ({"constante"})
      */
     private $pression;
 
     /**
-     * @ORM\Column(type="string", length=20, nullable=true)
+     * @ORM\Column(type="float",nullable=true)
      * @Groups ({"constante"})
      */
     private $pouls;
 
     /**
-     * @ORM\Column(type="string", length=5)
+     * @ORM\Column(type="float",nullable=false)
      * @Groups ({"constante"})
      */
     private $temperature;

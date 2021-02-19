@@ -20,9 +20,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4756cee9-6cc9-452e-9522-494fc0f82d3a" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/config/gestion_des_malades.sql" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/PdfController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/PdfController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/pdf/ordenance.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/pdf/ordenance.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Constante.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Constante.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Form/ConstanteType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/ConstanteType.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -170,17 +171,17 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/public/img" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/config" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/config" />
       <recent name="$PROJECT_DIR$/public/img" />
       <recent name="$PROJECT_DIR$/templates/pdf" />
       <recent name="$PROJECT_DIR$/templates" />
       <recent name="$PROJECT_DIR$/public" />
-      <recent name="$PROJECT_DIR$/templates/docteur" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/Services" />
@@ -223,7 +224,7 @@
       <workItem from="1612700560490" duration="2977000" />
       <workItem from="1612888014573" duration="2562000" />
       <workItem from="1613679092830" duration="10196000" />
-      <workItem from="1613727332527" duration="14507000" />
+      <workItem from="1613727332527" duration="17112000" />
     </task>
     <servers />
   </component>
