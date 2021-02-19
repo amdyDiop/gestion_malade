@@ -20,30 +20,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4756cee9-6cc9-452e-9522-494fc0f82d3a" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/public/img/logoSante.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Controller/PdfController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/basepdf.html.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/pdf/index.html.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/pdf/ordenance.html.twig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/pdf/pdf.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/gestionMalade.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gestionMalade.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/0/a/0a3e99b9da178509aeb5b3fa6f5dce46bc0eb8be" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/0/a/0a3e99b9da178509aeb5b3fa6f5dce46bc0eb8be" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/css/plugins/summernote/summernote-bs4.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/plugins/summernote/summernote-bs4.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/plugins/switchery/switchery.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/plugins/switchery/switchery.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/DocteurController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/DocteurController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/VisiteController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/VisiteController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Visite.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Visite.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Repository/ConstanceRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/ConstanceRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/symfony.lock" beforeDir="false" afterPath="$PROJECT_DIR$/symfony.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/base.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/visite/_form.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/visite/_form.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/visite/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/visite/index.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/visite/new.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/visite/new.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/PdfController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/PdfController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/pdf/ordenance.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/pdf/ordenance.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -244,7 +223,7 @@
       <workItem from="1612700560490" duration="2977000" />
       <workItem from="1612888014573" duration="2562000" />
       <workItem from="1613679092830" duration="10196000" />
-      <workItem from="1613727332527" duration="10298000" />
+      <workItem from="1613727332527" duration="14507000" />
     </task>
     <servers />
   </component>

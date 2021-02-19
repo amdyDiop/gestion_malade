@@ -2,16 +2,25 @@
 
 {% block body %}
     <div style="margin-left: 12%">
-        <img src="{{ asset('img/logoSante.jpg') }}" alt="logo santé">
-        <p>République du Sénégal  <span style="float: right">Date: {{ now|date('d,m,Y') }}</span></p>
-        <p> Ministère de la santé</p>
-        <p> Et de l’action sociale</p>
+        <p>République du Sénégal <span style="float: right">Date: {{ "now"|date("d/m/Y") }}</span></p>
+        <p> Ministère de la santé <span
+                    style="float: right">Nom du malade: {{ visite.patient.user.prenom ~" "~ visite.patient.user.nom }} </span>
+        </p>
+        <p> Et de l’action sociale <span style="float: right">adresse: {{ visite.patient.user.adresse }}</span></p>
         <p> Centre hospitalier régional</p>
         <p> Amadou Sakhir Mbaye de Louga</p>
         <p> Tel : 33 967 09 29</p>
         <p> Email : chrasmlouga@gmail.com</p>
-        <div style="margin-left: 40%"><h3>Certificat médical</h3></div>
-
+        <div style="margin-left: 40%"><h3 class="border border-dark">Ordenance</h3></div>
+        <div class="container justify-content-center">
+            <ul class="list-group" style="margin-left: 30%">
+                {% for ordenance in visite.ordenance.medicaments %}
+                    <li class="list-group-item" >
+                        {{ ordenance.libelle }}
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
         <p> Fait le : {{ "now"|date("d/m/Y") }} <span style="float:right ;margin-left: 5%">Médecin</span></p>
     </div>
 {% endblock %}

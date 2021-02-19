@@ -16,7 +16,7 @@ class PdfController extends AbstractController
     /**
      * @Route("/pdf/{id}/{idV}", name="pdf")
      */
-    public function index(Patient $patient, int $idV , VisiteRepository $visiteRepository): Response
+    public function index(Patient $patient, int $idV, VisiteRepository $visiteRepository): Response
     {
 
         $medecin = $this->getUser();
@@ -51,7 +51,7 @@ class PdfController extends AbstractController
     /**
      * @Route("/ordenace/{id}", name="ordenace_pdf")
      */
-    public function ordenacePdf(Visite $visite,  VisiteRepository $visiteRepository): Response
+    public function ordenacePdf(Visite $visite, VisiteRepository $visiteRepository): Response
     {
         $options = new Options(array('enable_remote' => true));
         $options->set('defaultFont', 'Roboto');
