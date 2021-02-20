@@ -82,7 +82,6 @@ class VisiteController extends AbstractController
             'form' => $form->createView(),
         ]);
     }
-
     /**
      * @Route("/{id}/sow", name="visite_show", methods={"GET"},requirements={"id"="\d+"})
      */
@@ -92,7 +91,6 @@ class VisiteController extends AbstractController
             'visite' => $visite,
         ]);
     }
-
     /**
      * @Route("/{id}/edit", name="visite_edit", methods={"GET","POST"})
      */

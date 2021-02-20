@@ -17,6 +17,7 @@ class Patient
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
+     * @Groups ({"patient"})
      *
      */
     private $id;

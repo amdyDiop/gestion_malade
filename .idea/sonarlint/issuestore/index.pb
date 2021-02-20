@@ -85,3 +85,17 @@ V
 &src/Repository/ConstanceRepository.php,a/3/a34b434e1734f30c3524005c19e88351e3337094
 R
 "templates/security/login.html.twig,8/9/89d5f9595fc54c90b0c2626c3e5e07e23a679864
+K
+templates/basepdf.html.twig,7/b/7bccbf913c011f1198b02998e0e0796e374227af
+T
+$src/Controller/DocteurController.php,0/7/0780b4e26174885519b39841c61449013841caa1
+M
+templates/pdf/index.html.twig,4/f/4ffb0bc26cd5373973d0da028137f97237db9a5d
+K
+templates/pdf/pdf.html.twig,f/c/fc99f77386153fb1ddac33e74ddb0c2e639b085f
+I
+src/Entity/Medicament.php,b/0/b0a6403c8388c4e771643a6549a4ba10eb1c473b
+Q
+!templates/pdf/ordenance.html.twig,f/c/fc66f6a7b81d2edcbf2fc6a13848a3be1ab29456
+P
+ src/Controller/PdfController.php,9/0/906b32d1bc282718ec9373a8088ffa4ba2207392

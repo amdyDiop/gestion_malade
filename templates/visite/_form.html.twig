@@ -32,60 +32,62 @@
                     </div>
                     <div class="ibox-content">
                         <div class="row justify-content-center">
-
-                            {% if patient.constances.values[0].tenssion !=null %}
-                                <div class="col-lg-2">
-                                    <div class="widget navy-bg p-lg text-center">
-                                        <div class="m-b-md">
-                                            <i class="fa fa-shield fa-4x"></i>
-                                            <h1 class="m-xs"> {{ patient.constances.values[0].tenssion }}</h1>
-                                            <h3 class="font-bold no-margins">
-                                                Tension
-                                            </h3>
+                            {% if patient.constances is not empty %}
+                                {% if patient.constances.values[0].tenssion !=null %}
+                                    <div class="col-lg-2">
+                                        <div class="widget navy-bg p-lg text-center">
+                                            <div class="m-b-md">
+                                                <i class="fa fa-shield fa-4x"></i>
+                                                <h1 class="m-xs"> {{ patient.constances.values[0].tenssion }}</h1>
+                                                <h3 class="font-bold no-margins">
+                                                    Tension
+                                                </h3>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                            {% endif %}
-                            {% if patient.constances.values[0].tenssion !=null %}
-                                <div class="col-lg-2">
-                                    <div class="widget navy-bg p-lg text-center">
-                                        <div class="m-b-md">
-                                            <i class="fa fa-shield fa-4x"></i>
-                                            <h1 class="m-xs"> {{ patient.constances.values[0].pression }}</h1>
-                                            <h3 class="font-bold no-margins">
-                                                Préssion
-                                            </h3>
+                                {% endif %}
+                                {% if patient.constances.values[0].tenssion !=null %}
+                                    <div class="col-lg-2">
+                                        <div class="widget navy-bg p-lg text-center">
+                                            <div class="m-b-md">
+                                                <i class="fa fa-shield fa-4x"></i>
+                                                <h1 class="m-xs"> {{ patient.constances.values[0].pression }}</h1>
+                                                <h3 class="font-bold no-margins">
+                                                    Préssion
+                                                </h3>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                            {% endif %}
-                            {% if patient.constances.values[0].tenssion !=null %}
-                                <div class="col-lg-2">
-                                    <div class="widget navy-bg p-lg text-center">
-                                        <div class="m-b-md">
-                                            <i class="fa fa-shield fa-4x"></i>
-                                            <h1 class="m-xs"> {{ patient.constances.values[0].pouls }}</h1>
-                                            <h3 class="font-bold no-margins">
-                                                Pouls
-                                            </h3>
+                                {% endif %}
+                                {% if patient.constances.values[0].tenssion !=null %}
+                                    <div class="col-lg-2">
+                                        <div class="widget navy-bg p-lg text-center">
+                                            <div class="m-b-md">
+                                                <i class="fa fa-shield fa-4x"></i>
+                                                <h1 class="m-xs"> {{ patient.constances.values[0].pouls }}</h1>
+                                                <h3 class="font-bold no-margins">
+                                                    Pouls
+                                                </h3>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                            {% endif %}
-                            {% if patient.constances.values[0].tenssion !=null %}
-                                <div class="col-lg-2">
-                                    <div class="widget navy-bg p-lg text-center">
-                                        <div class="m-b-md">
-                                            <i class="fa fa-shield fa-4x"></i>
-                                            <h1 class="m-xs"> {{ patient.constances.values[0].temperature }}</h1>
-                                            <h3 class="font-bold no-margins">
-                                                Tempéra
-                                            </h3>
+                                {% endif %}
+                                {% if patient.constances.values[0].tenssion !=null %}
+                                    <div class="col-lg-2">
+                                        <div class="widget navy-bg p-lg text-center">
+                                            <div class="m-b-md">
+                                                <i class="fa fa-shield fa-4x"></i>
+                                                <h1 class="m-xs"> {{ patient.constances.values[0].temperature }}</h1>
+                                                <h3 class="font-bold no-margins">
+                                                    Tempéra
+                                                </h3>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
+                                {% endif %}
+                            {% else %}
+                                <h3 class="title">Pas de visite pour cet patient</h3>
                             {% endif %}
-
                         </div>
                     </div>
                 </div>
